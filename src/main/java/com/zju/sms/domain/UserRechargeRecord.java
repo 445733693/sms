@@ -3,6 +3,8 @@ package com.zju.sms.domain;
 import java.util.Date;
 
 public class UserRechargeRecord {
+    private Integer id;
+
     private String userId;
 
     private String type;
@@ -12,6 +14,14 @@ public class UserRechargeRecord {
     private Integer number;
 
     private String comment;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getUserId() {
         return userId;
