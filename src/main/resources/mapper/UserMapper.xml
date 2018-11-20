@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zju.sms.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.zju.sms.domain.User" >
+    <id column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="companyPhone" property="companyPhone" jdbcType="VARCHAR" />
+    <result column="companyContact" property="companyContact" jdbcType="VARCHAR" />
+    <result column="contactPhone" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="companyAddr" property="companyAddr" jdbcType="VARCHAR" />
+    <result column="companyDescription" property="companyDescription" jdbcType="VARCHAR" />
+    <result column="balance" property="balance" jdbcType="INTEGER" />
+    <result column="agentId" property="agentId" jdbcType="VARCHAR" />
+    <result column="priority" property="priority" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="registerDate" property="registerDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from `user`
+    where userId = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zju.sms.domain.User" >
+    insert into `user` (userId, password, company, 
+      companyPhone, companyContact, contactPhone, 
+      companyAddr, companyDescription, balance, 
+      agentId, priority, status, 
+      registerDate)
+    values (#{userId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
+      #{companyPhone,jdbcType=VARCHAR}, #{companyContact,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, 
+      #{companyAddr,jdbcType=VARCHAR}, #{companyDescription,jdbcType=VARCHAR}, #{balance,jdbcType=INTEGER}, 
+      #{agentId,jdbcType=VARCHAR}, #{priority,jdbcType=VARCHAR}, #{status,jdbcType=BIT}, 
+      #{registerDate,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.User" >
+    update `user`
+    set password = #{password,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      companyPhone = #{companyPhone,jdbcType=VARCHAR},
+      companyContact = #{companyContact,jdbcType=VARCHAR},
+      contactPhone = #{contactPhone,jdbcType=VARCHAR},
+      companyAddr = #{companyAddr,jdbcType=VARCHAR},
+      companyDescription = #{companyDescription,jdbcType=VARCHAR},
+      balance = #{balance,jdbcType=INTEGER},
+      agentId = #{agentId,jdbcType=VARCHAR},
+      priority = #{priority,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIT},
+      registerDate = #{registerDate,jdbcType=TIMESTAMP}
+    where userId = #{userId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select userId, password, company, companyPhone, companyContact, contactPhone, companyAddr, 
+    companyDescription, balance, agentId, priority, status, registerDate
+    from `user`
+    where userId = #{userId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select userId, password, company, companyPhone, companyContact, contactPhone, companyAddr, 
+    companyDescription, balance, agentId, priority, status, registerDate
+    from `user`
+  </select>
+</mapper>
