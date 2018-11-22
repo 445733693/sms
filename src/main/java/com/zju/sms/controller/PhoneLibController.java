@@ -18,6 +18,7 @@ public class PhoneLibController{
         phoneLibCategoryService.save(phoneLibCategory);
         return"success";
     }
+
     @RequestMapping(value = "/phoneLibCategorys",method = RequestMethod.PUT)
     public String update(@RequestBody  PhoneLibCategory phoneLibCategory){
         PhoneLibCategory old = phoneLibCategoryService.get(phoneLibCategory.getId());
