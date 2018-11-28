@@ -4,11 +4,11 @@ import com.zju.sms.domain.UserRechargeRecord;
 import java.util.List;
 
 public interface UserRechargeRecordMapper {
-    int deleteByPrimaryKey(String userId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(UserRechargeRecord record);
 
-    UserRechargeRecord selectByPrimaryKey(String userId);
+    UserRechargeRecord selectByPrimaryKey(Integer id);
 
     List<UserRechargeRecord> selectAll();
 

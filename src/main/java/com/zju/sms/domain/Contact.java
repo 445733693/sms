@@ -7,7 +7,7 @@ public class Contact {
 
     private String name;
 
-    private Date phone;
+    private String phone;
 
     private String category;
 
@@ -47,11 +47,11 @@ public class Contact {
         this.name = name;
     }
 
-    public Date getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Date phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

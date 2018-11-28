@@ -3,14 +3,15 @@
 <mapper namespace="com.zju.sms.mapper.ContactCategoryMapper" >
   <resultMap id="BaseResultMap" type="com.zju.sms.domain.ContactCategory" >
     <id column="userId" property="userId" jdbcType="VARCHAR" />
-    <result column="categoryName" property="categoryName" jdbcType="VARCHAR" />
+    <id column="categoryName" property="categoryName" jdbcType="VARCHAR" />
     <result column="comment" property="comment" jdbcType="VARCHAR" />
     <result column="date" property="date" jdbcType="TIMESTAMP" />
     <result column="number" property="number" jdbcType="INTEGER" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="map" >
     delete from `contactcategory`
     where userId = #{userId,jdbcType=VARCHAR}
+      and categoryName = #{categoryName,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.zju.sms.domain.ContactCategory" >
     insert into `contactcategory` (userId, categoryName, comment, 
@@ -20,16 +21,17 @@
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.ContactCategory" >
     update `contactcategory`
-    set categoryName = #{categoryName,jdbcType=VARCHAR},
-      comment = #{comment,jdbcType=VARCHAR},
+    set comment = #{comment,jdbcType=VARCHAR},
       date = #{date,jdbcType=TIMESTAMP},
       number = #{number,jdbcType=INTEGER}
     where userId = #{userId,jdbcType=VARCHAR}
+      and categoryName = #{categoryName,jdbcType=VARCHAR}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
     select userId, categoryName, comment, date, number
     from `contactcategory`
     where userId = #{userId,jdbcType=VARCHAR}
+      and categoryName = #{categoryName,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
     select userId, categoryName, comment, date, number
