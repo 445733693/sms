@@ -10,10 +10,12 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+
 public class TemplateCategoryServiceImpl implements ITemplateCategoryService{
 
     @Autowired
     private TemplateCategoryMapper templateCategoryMapper;
+
 
     @Override
     public void save(TemplateCategory templateCategory) {
@@ -40,4 +42,10 @@ public class TemplateCategoryServiceImpl implements ITemplateCategoryService{
     public List<TemplateCategory> getAll() {
         return templateCategoryMapper.selectAll();
     }
+<<<<<<< HEAD
 }
+=======
+
+}
+
+>>>>>>> 697223966c36fdd163c015f64ffda8c4965067f7
