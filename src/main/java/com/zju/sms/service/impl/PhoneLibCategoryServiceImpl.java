@@ -1,6 +1,5 @@
 package com.zju.sms.service.impl;
 
-import com.zju.sms.domain.PhoneLibCategory;
 import com.zju.sms.mapper.PhoneLibCategoryMapper;
 import com.zju.sms.service.IPhoneLibCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;

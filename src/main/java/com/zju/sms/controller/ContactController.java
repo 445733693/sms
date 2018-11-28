@@ -1,6 +1,5 @@
 package com.zju.sms.controller;
 
-import com.zju.sms.domain.Contact;
 import com.zju.sms.service.IContactService;
 import com.zju.sms.util.UpdateUtil;
 import org.springframework.beans.factory.annotation.Autowired;

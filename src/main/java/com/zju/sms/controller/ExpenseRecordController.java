@@ -1,6 +1,5 @@
 package com.zju.sms.controller;
 
-import com.zju.sms.domain.ExpenseRecord;
 import com.zju.sms.service.IExpenseRecordService;
 import com.zju.sms.util.UpdateUtil;
 import org.springframework.beans.factory.annotation.Autowired;

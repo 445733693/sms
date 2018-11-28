@@ -4,11 +4,11 @@ import com.zju.sms.domain.Admin;
 import java.util.List;
 
 public interface AdminMapper {
-    int deleteByPrimaryKey(String adminId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Admin record);
 
-    Admin selectByPrimaryKey(String adminId);
+    Admin selectByPrimaryKey(Integer id);
 
     List<Admin> selectAll();
 

@@ -1,6 +1,5 @@
 package com.zju.sms.service.impl;
 
-import com.zju.sms.domain.Advice;
 import com.zju.sms.mapper.AdviceMapper;
 import com.zju.sms.service.IAdviceService;
 import org.springframework.beans.factory.annotation.Autowired;

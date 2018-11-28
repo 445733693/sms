@@ -1,6 +1,5 @@
 package com.zju.sms.service.impl;
 
-import com.zju.sms.domain.Contact;
 import com.zju.sms.mapper.ContactMapper;
 import com.zju.sms.service.IContactService;
 import org.springframework.beans.factory.annotation.Autowired;

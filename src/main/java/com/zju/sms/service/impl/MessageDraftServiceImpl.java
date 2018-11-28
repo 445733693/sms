@@ -1,6 +1,5 @@
 package com.zju.sms.service.impl;
 
-import com.zju.sms.domain.MessageDraft;
 import com.zju.sms.mapper.MessageDraftMapper;
 import com.zju.sms.service.IMessageDraftService;
 import org.springframework.beans.factory.annotation.Autowired;

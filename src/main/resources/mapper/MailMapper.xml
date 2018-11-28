@@ -3,6 +3,7 @@
 <mapper namespace="com.zju.sms.mapper.MailMapper" >
   <resultMap id="BaseResultMap" type="com.zju.sms.domain.Mail" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="agentId" property="agentId" jdbcType="INTEGER" />
     <result column="context" property="context" jdbcType="VARCHAR" />
     <result column="date" property="date" jdbcType="TIMESTAMP" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -13,26 +14,27 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zju.sms.domain.Mail" useGeneratedKeys="true" keyProperty="id" >
-    insert into `mail` (context, date, name, 
-      status)
-    values (#{context,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR})
+    insert into `mail` (agentId, context, date, 
+      name, status)
+    values (#{agentId,jdbcType=INTEGER}, #{context,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
+      #{name,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.Mail" >
     update `mail`
-    set context = #{context,jdbcType=VARCHAR},
+    set agentId = #{agentId,jdbcType=INTEGER},
+      context = #{context,jdbcType=VARCHAR},
       date = #{date,jdbcType=TIMESTAMP},
       name = #{name,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select id, context, date, name, status
+    select id, agentId, context, date, name, status
     from `mail`
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select id, context, date, name, status
+    select id, agentId, context, date, name, status
     from `mail`
   </select>
 </mapper>

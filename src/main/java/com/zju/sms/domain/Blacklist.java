@@ -1,17 +1,13 @@
 package com.zju.sms.domain;
 
-import java.util.Date;
-
-public class TemplateCategory {
+public class Blacklist {
     private Integer id;
 
     private Integer userId;
 
-    private String categoryName;
-
     private String comment;
 
-    private Date date;
+    private String content;
 
     public Integer getId() {
         return id;
@@ -29,14 +25,6 @@ public class TemplateCategory {
         this.userId = userId;
     }
 
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
     public String getComment() {
         return comment;
     }
@@ -45,11 +33,11 @@ public class TemplateCategory {
         this.comment = comment;
     }
 
-    public Date getDate() {
-        return date;
+    public String getContent() {
+        return content;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setContent(String content) {
+        this.content = content;
     }
 }

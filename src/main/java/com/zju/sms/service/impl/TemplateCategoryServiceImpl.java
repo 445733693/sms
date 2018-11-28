@@ -1,6 +1,5 @@
 package com.zju.sms.service.impl;
 
-import com.zju.sms.domain.TemplateCategory;
 import com.zju.sms.mapper.TemplateCategoryMapper;
 import com.zju.sms.service.ITemplateCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;

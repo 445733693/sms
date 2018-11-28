@@ -1,6 +1,5 @@
 package com.zju.sms.service.impl;
 
-import com.zju.sms.domain.UserRechargeRecord;
 import com.zju.sms.mapper.UserRechargeRecordMapper;
 import com.zju.sms.service.IUserRechargeRecordService;
 import org.springframework.beans.factory.annotation.Autowired;

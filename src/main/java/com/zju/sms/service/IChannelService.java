@@ -1,6 +1,5 @@
 package com.zju.sms.service;
 
-import com.zju.sms.domain.Channel;
 import java.util.List;
 
 public interface IChannelService {

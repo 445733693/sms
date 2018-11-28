@@ -1,6 +1,5 @@
 package com.zju.sms.service.impl;
 
-import com.zju.sms.domain.InvoiceInfo;
 import com.zju.sms.mapper.InvoiceInfoMapper;
 import com.zju.sms.service.IInvoiceInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

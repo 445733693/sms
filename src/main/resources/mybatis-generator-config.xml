@@ -126,14 +126,23 @@
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
 
-
-
-       <!-- <table tableName="admin" delimitIdentifiers="true" domainObjectName="Admin">
+        <table tableName="admin" delimitIdentifiers="true" domainObjectName="Admin">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>-->
+        </table>
 
+        <table tableName="keyword" delimitIdentifiers="true" domainObjectName="Keyword">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
 
-
+        <table tableName="blacklist" delimitIdentifiers="true" domainObjectName="Blacklist">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="whiteklist" delimitIdentifiers="true" domainObjectName="whitelist">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
     </context>
 </generatorConfiguration>

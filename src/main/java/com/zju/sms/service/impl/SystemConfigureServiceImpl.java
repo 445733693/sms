@@ -1,6 +1,5 @@
 package com.zju.sms.service.impl;
 
-import com.zju.sms.domain.SystemConfigure;
 import com.zju.sms.mapper.SystemConfigureMapper;
 import com.zju.sms.service.ISystemConfigureService;
 import org.springframework.beans.factory.annotation.Autowired;

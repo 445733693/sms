@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zju.sms.mapper.KeywordMapper" >
+  <resultMap id="BaseResultMap" type="com.zju.sms.domain.Keyword" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="agentId" property="agentId" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from `keyword`
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zju.sms.domain.Keyword" useGeneratedKeys="true" keyProperty="id" >
+    insert into `keyword` (agentId, content, comment
+      )
+    values (#{agentId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.Keyword" >
+    update `keyword`
+    set agentId = #{agentId,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, agentId, content, comment
+    from `keyword`
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, agentId, content, comment
+    from `keyword`
+  </select>
+</mapper>

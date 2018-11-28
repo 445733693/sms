@@ -3,7 +3,7 @@
 <mapper namespace="com.zju.sms.mapper.AdviceMapper" >
   <resultMap id="BaseResultMap" type="com.zju.sms.domain.Advice" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
     <result column="context" property="context" jdbcType="VARCHAR" />
     <result column="reply" property="reply" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
@@ -16,12 +16,12 @@
   <insert id="insert" parameterType="com.zju.sms.domain.Advice" useGeneratedKeys="true" keyProperty="id" >
     insert into `advice` (userId, context, reply, 
       status, date)
-    values (#{userId,jdbcType=VARCHAR}, #{context,jdbcType=VARCHAR}, #{reply,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=INTEGER}, #{context,jdbcType=VARCHAR}, #{reply,jdbcType=VARCHAR}, 
       #{status,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.Advice" >
     update `advice`
-    set userId = #{userId,jdbcType=VARCHAR},
+    set userId = #{userId,jdbcType=INTEGER},
       context = #{context,jdbcType=VARCHAR},
       reply = #{reply,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},

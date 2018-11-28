@@ -1,6 +1,5 @@
 package com.zju.sms.service.impl;
 
-import com.zju.sms.domain.Agent;
 import com.zju.sms.mapper.AgentMapper;
 import com.zju.sms.service.IAgentService;
 import org.springframework.beans.factory.annotation.Autowired;

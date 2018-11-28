@@ -1,7 +1,5 @@
 package com.zju.sms.service;
 
-import com.zju.sms.domain.PhoneLib;
-
 import java.util.List;
 
 public interface IPhoneLibService {

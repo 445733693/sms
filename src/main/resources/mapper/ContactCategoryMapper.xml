@@ -2,39 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zju.sms.mapper.ContactCategoryMapper" >
   <resultMap id="BaseResultMap" type="com.zju.sms.domain.ContactCategory" >
-    <id column="userId" property="userId" jdbcType="VARCHAR" />
-    <id column="categoryName" property="categoryName" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
+    <result column="categoryName" property="categoryName" jdbcType="VARCHAR" />
     <result column="comment" property="comment" jdbcType="VARCHAR" />
     <result column="date" property="date" jdbcType="TIMESTAMP" />
     <result column="number" property="number" jdbcType="INTEGER" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="map" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from `contactcategory`
-    where userId = #{userId,jdbcType=VARCHAR}
-      and categoryName = #{categoryName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zju.sms.domain.ContactCategory" >
-    insert into `contactcategory` (userId, categoryName, comment, 
-      date, number)
-    values (#{userId,jdbcType=VARCHAR}, #{categoryName,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, 
-      #{date,jdbcType=TIMESTAMP}, #{number,jdbcType=INTEGER})
+    insert into `contactcategory` (id, userId, categoryName, 
+      comment, date, number
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR}, 
+      #{comment,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{number,jdbcType=INTEGER}
+      )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.ContactCategory" >
     update `contactcategory`
-    set comment = #{comment,jdbcType=VARCHAR},
+    set userId = #{userId,jdbcType=INTEGER},
+      categoryName = #{categoryName,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR},
       date = #{date,jdbcType=TIMESTAMP},
       number = #{number,jdbcType=INTEGER}
-    where userId = #{userId,jdbcType=VARCHAR}
-      and categoryName = #{categoryName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
-    select userId, categoryName, comment, date, number
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, userId, categoryName, comment, date, number
     from `contactcategory`
-    where userId = #{userId,jdbcType=VARCHAR}
-      and categoryName = #{categoryName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select userId, categoryName, comment, date, number
+    select id, userId, categoryName, comment, date, number
     from `contactcategory`
   </select>
 </mapper>

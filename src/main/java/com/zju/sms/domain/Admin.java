@@ -3,7 +3,9 @@ package com.zju.sms.domain;
 import java.util.Date;
 
 public class Admin {
-    private String adminId;
+    private Integer id;
+
+    private String username;
 
     private String password;
 
@@ -53,12 +55,20 @@ public class Admin {
 
     private Boolean p_loginTime;
 
-    public String getAdminId() {
-        return adminId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

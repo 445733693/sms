@@ -1,6 +1,5 @@
 package com.zju.sms.service.impl;
 
-import com.zju.sms.domain.Channel;
 import com.zju.sms.mapper.ChannelMapper;
 import com.zju.sms.service.IChannelService;
 import org.springframework.beans.factory.annotation.Autowired;

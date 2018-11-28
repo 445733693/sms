@@ -1,7 +1,5 @@
 package com.zju.sms.service;
 
-import com.zju.sms.domain.InvoiceInfo;
-
 import java.util.List;
 
 public interface IInvoiceInfoService {

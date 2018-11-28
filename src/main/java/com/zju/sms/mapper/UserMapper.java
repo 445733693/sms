@@ -4,14 +4,13 @@ import com.zju.sms.domain.User;
 import java.util.List;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(String userId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
 
-    User selectByPrimaryKey(String userId);
+    User selectByPrimaryKey(Integer id);
 
     List<User> selectAll();
 
     int updateByPrimaryKey(User record);
-
 }

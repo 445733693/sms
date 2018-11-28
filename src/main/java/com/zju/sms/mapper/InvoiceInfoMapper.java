@@ -4,11 +4,11 @@ import com.zju.sms.domain.InvoiceInfo;
 import java.util.List;
 
 public interface InvoiceInfoMapper {
-    int deleteByPrimaryKey(String userId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(InvoiceInfo record);
 
-    InvoiceInfo selectByPrimaryKey(String userId);
+    InvoiceInfo selectByPrimaryKey(Integer id);
 
     List<InvoiceInfo> selectAll();
 

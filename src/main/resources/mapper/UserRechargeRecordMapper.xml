@@ -3,7 +3,7 @@
 <mapper namespace="com.zju.sms.mapper.UserRechargeRecordMapper" >
   <resultMap id="BaseResultMap" type="com.zju.sms.domain.UserRechargeRecord" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="date" property="date" jdbcType="TIMESTAMP" />
     <result column="number" property="number" jdbcType="INTEGER" />
@@ -17,13 +17,13 @@
     insert into `userrechargerecord` (id, userId, type, 
       date, number, comment
       )
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
       #{date,jdbcType=TIMESTAMP}, #{number,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.UserRechargeRecord" >
     update `userrechargerecord`
-    set userId = #{userId,jdbcType=VARCHAR},
+    set userId = #{userId,jdbcType=INTEGER},
       type = #{type,jdbcType=VARCHAR},
       date = #{date,jdbcType=TIMESTAMP},
       number = #{number,jdbcType=INTEGER},

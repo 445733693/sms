@@ -1,7 +1,5 @@
 package com.zju.sms.service;
 
-import com.zju.sms.domain.Announcement;
-
 import java.util.List;
 
 public interface IAnnouncementService {

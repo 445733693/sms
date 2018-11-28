@@ -3,6 +3,8 @@ package com.zju.sms.domain;
 import java.util.Date;
 
 public class User {
+    private Integer id;
+
     private String userId;
 
     private String password;
@@ -21,13 +23,21 @@ public class User {
 
     private Integer balance;
 
-    private String agentId;
+    private Integer agentId;
 
     private String priority;
 
     private Boolean status;
 
     private Date registerDate;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getUserId() {
         return userId;
@@ -101,11 +111,11 @@ public class User {
         this.balance = balance;
     }
 
-    public String getAgentId() {
+    public Integer getAgentId() {
         return agentId;
     }
 
-    public void setAgentId(String agentId) {
+    public void setAgentId(Integer agentId) {
         this.agentId = agentId;
     }
 

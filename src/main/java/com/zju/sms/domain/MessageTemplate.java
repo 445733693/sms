@@ -5,7 +5,7 @@ import java.util.Date;
 public class MessageTemplate {
     private Integer id;
 
-    private String userId;
+    private Integer userId;
 
     private String category;
 
@@ -21,11 +21,11 @@ public class MessageTemplate {
         this.id = id;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

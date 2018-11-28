@@ -5,7 +5,7 @@ import java.util.Date;
 public class AgentRechargeRecord {
     private Integer id;
 
-    private String agentId;
+    private Integer agentId;
 
     private String type;
 
@@ -25,11 +25,11 @@ public class AgentRechargeRecord {
         this.id = id;
     }
 
-    public String getAgentId() {
+    public Integer getAgentId() {
         return agentId;
     }
 
-    public void setAgentId(String agentId) {
+    public void setAgentId(Integer agentId) {
         this.agentId = agentId;
     }
 

@@ -3,7 +3,7 @@
 <mapper namespace="com.zju.sms.mapper.AgentRechargeRecordMapper" >
   <resultMap id="BaseResultMap" type="com.zju.sms.domain.AgentRechargeRecord" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="agentId" property="agentId" jdbcType="VARCHAR" />
+    <result column="agentId" property="agentId" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="date" property="date" jdbcType="TIMESTAMP" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -18,13 +18,13 @@
     insert into `agentrechargerecord` (agentId, type, date, 
       name, number, comment
       )
-    values (#{agentId,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
+    values (#{agentId,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
       #{name,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.AgentRechargeRecord" >
     update `agentrechargerecord`
-    set agentId = #{agentId,jdbcType=VARCHAR},
+    set agentId = #{agentId,jdbcType=INTEGER},
       type = #{type,jdbcType=VARCHAR},
       date = #{date,jdbcType=TIMESTAMP},
       name = #{name,jdbcType=VARCHAR},

@@ -1,7 +1,5 @@
 package com.zju.sms.service;
 
-import com.zju.sms.domain.ContactCategory;
-
 import java.util.List;
 
 public interface IContactCategoryService {

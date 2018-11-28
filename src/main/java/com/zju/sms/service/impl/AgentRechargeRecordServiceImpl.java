@@ -1,6 +1,5 @@
 package com.zju.sms.service.impl;
 
-import com.zju.sms.domain.AgentRechargeRecord;
 import com.zju.sms.mapper.AgentRechargeRecordMapper;
 import com.zju.sms.service.IAgentRechargeRecordService;
 import org.springframework.beans.factory.annotation.Autowired;

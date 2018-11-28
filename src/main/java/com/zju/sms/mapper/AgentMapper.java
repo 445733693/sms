@@ -4,11 +4,11 @@ import com.zju.sms.domain.Agent;
 import java.util.List;
 
 public interface AgentMapper {
-    int deleteByPrimaryKey(String agentId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Agent record);
 
-    Agent selectByPrimaryKey(String agentId);
+    Agent selectByPrimaryKey(Integer id);
 
     List<Agent> selectAll();
 

@@ -3,7 +3,7 @@
 <mapper namespace="com.zju.sms.mapper.ExpenseRecordMapper" >
   <resultMap id="BaseResultMap" type="com.zju.sms.domain.ExpenseRecord" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
     <result column="context" property="context" jdbcType="VARCHAR" />
     <result column="date" property="date" jdbcType="TIMESTAMP" />
     <result column="number" property="number" jdbcType="INTEGER" />
@@ -15,12 +15,12 @@
   <insert id="insert" parameterType="com.zju.sms.domain.ExpenseRecord" useGeneratedKeys="true" keyProperty="id" >
     insert into `expenserecord` (userId, context, date, 
       number)
-    values (#{userId,jdbcType=VARCHAR}, #{context,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
+    values (#{userId,jdbcType=INTEGER}, #{context,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
       #{number,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.ExpenseRecord" >
     update `expenserecord`
-    set userId = #{userId,jdbcType=VARCHAR},
+    set userId = #{userId,jdbcType=INTEGER},
       context = #{context,jdbcType=VARCHAR},
       date = #{date,jdbcType=TIMESTAMP},
       number = #{number,jdbcType=INTEGER}

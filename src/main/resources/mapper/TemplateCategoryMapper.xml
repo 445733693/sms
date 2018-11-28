@@ -3,7 +3,7 @@
 <mapper namespace="com.zju.sms.mapper.TemplateCategoryMapper" >
   <resultMap id="BaseResultMap" type="com.zju.sms.domain.TemplateCategory" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
     <result column="categoryName" property="categoryName" jdbcType="VARCHAR" />
     <result column="comment" property="comment" jdbcType="VARCHAR" />
     <result column="date" property="date" jdbcType="TIMESTAMP" />
@@ -15,12 +15,12 @@
   <insert id="insert" parameterType="com.zju.sms.domain.TemplateCategory" useGeneratedKeys="true" keyProperty="id" >
     insert into `templatecategory` (userId, categoryName, comment, 
       date)
-    values (#{userId,jdbcType=VARCHAR}, #{categoryName,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, 
       #{date,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.TemplateCategory" >
     update `templatecategory`
-    set userId = #{userId,jdbcType=VARCHAR},
+    set userId = #{userId,jdbcType=INTEGER},
       categoryName = #{categoryName,jdbcType=VARCHAR},
       comment = #{comment,jdbcType=VARCHAR},
       date = #{date,jdbcType=TIMESTAMP}
