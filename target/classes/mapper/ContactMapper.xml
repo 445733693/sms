@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zju.sms.mapper.ContactMapper" >
+  <resultMap id="BaseResultMap" type="com.zju.sms.domain.Contact" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="TIMESTAMP" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="companyPhone" property="companyPhone" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="addTime" property="addTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from `contact`
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zju.sms.domain.Contact" useGeneratedKeys="true" keyProperty="id" >
+    insert into `contact` (name, phone, category, 
+      gender, company, companyPhone, 
+      address, email, qq, 
+      website, birthday, comment, 
+      addTime)
+    values (#{name,jdbcType=VARCHAR}, #{phone,jdbcType=TIMESTAMP}, #{category,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{companyPhone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
+      #{website,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{comment,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.Contact" >
+    update `contact`
+    set name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=TIMESTAMP},
+      category = #{category,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      companyPhone = #{companyPhone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      comment = #{comment,jdbcType=VARCHAR},
+      addTime = #{addTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, name, phone, category, gender, company, companyPhone, address, email, 
+    qq, website, birthday, comment, addTime
+    from `contact`
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, name, phone, category, gender, company, companyPhone, address, email, 
+    qq, website, birthday, comment, addTime
+    from `contact`
+  </select>
+</mapper>

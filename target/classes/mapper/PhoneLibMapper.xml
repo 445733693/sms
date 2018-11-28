@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zju.sms.mapper.PhoneLibMapper" >
+  <resultMap id="BaseResultMap" type="com.zju.sms.domain.PhoneLib" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from `phonelib`
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zju.sms.domain.PhoneLib" useGeneratedKeys="true" keyProperty="id" >
+    insert into `phonelib` (category, title, phone, 
+      number, comment)
+    values (#{category,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.PhoneLib" >
+    update `phonelib`
+    set category = #{category,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, category, title, phone, number, comment
+    from `phonelib`
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, category, title, phone, number, comment
+    from `phonelib`
+  </select>
+</mapper>

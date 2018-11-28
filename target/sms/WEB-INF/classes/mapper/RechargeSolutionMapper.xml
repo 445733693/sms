@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zju.sms.mapper.RechargeSolutionMapper" >
+  <resultMap id="BaseResultMap" type="com.zju.sms.domain.RechargeSolution" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from `rechargesolution`
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zju.sms.domain.RechargeSolution" useGeneratedKeys="true" keyProperty="id" >
+    insert into `rechargesolution` (number, price, comment, 
+      date)
+    values (#{number,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{comment,jdbcType=VARCHAR}, 
+      #{date,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.RechargeSolution" >
+    update `rechargesolution`
+    set number = #{number,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      comment = #{comment,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, number, price, comment, date
+    from `rechargesolution`
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, number, price, comment, date
+    from `rechargesolution`
+  </select>
+</mapper>
