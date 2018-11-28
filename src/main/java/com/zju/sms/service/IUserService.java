@@ -1,7 +1,5 @@
 package com.zju.sms.service;
 
-import com.zju.sms.domain.User;
-
 import java.util.List;
 
 public interface IUserService {
