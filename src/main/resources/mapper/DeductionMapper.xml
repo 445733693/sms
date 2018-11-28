@@ -13,26 +13,26 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zju.sms.domain.Deduction" useGeneratedKeys="true" keyProperty="id" >
-    insert into `deduction` (from, to, percent, 
+    insert into `deduction` (`from`, `to`, percent,
       date)
     values (#{from,jdbcType=INTEGER}, #{to,jdbcType=INTEGER}, #{percent,jdbcType=DOUBLE}, 
       #{date,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.Deduction" >
     update `deduction`
-    set from = #{from,jdbcType=INTEGER},
-      to = #{to,jdbcType=INTEGER},
+    set `from` = #{from,jdbcType=INTEGER},
+      `to` = #{to,jdbcType=INTEGER},
       percent = #{percent,jdbcType=DOUBLE},
       date = #{date,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select id, from, to, percent, date
+    select id, `from`, `to`, percent, date
     from `deduction`
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select id, from, to, percent, date
+    select id, `from`, `to`, percent, date
     from `deduction`
   </select>
 </mapper>

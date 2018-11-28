@@ -14,33 +14,28 @@ public class TemplateCategoryController {
     private ITemplateCategoryService templateCategoryService;
 
     @RequestMapping(value = "/templateCategorys",method = RequestMethod.POST)
-    public String save(@RequestBody TemplateCategory templateCategory){
+    public String saveTemplateCategory(@RequestBody TemplateCategory templateCategory){
         templateCategoryService.save(templateCategory);
-        return "success";
+        return"success";
     }
     @RequestMapping(value = "/templateCategorys",method = RequestMethod.PUT)
-    public String update(@RequestBody TemplateCategory templateCategory){
+    public String updateTemplateCategory(@RequestBody TemplateCategory templateCategory){
         TemplateCategory old = templateCategoryService.get(templateCategory.getId());
         UpdateUtil.updateIfNotNull(old,templateCategory);
         templateCategoryService.update(old);
         return"success";
     }
-
-
     @RequestMapping(value = "/templateCategorys/{id}",method = RequestMethod.DELETE)
-    public String delete(@PathVariable Integer id){
+    public String deleteTemplateCategory(@PathVariable("id") Integer id){
         templateCategoryService.delete(id);
-        return "success";
+        return"success";
     }
-
-
     @RequestMapping(value = "/templateCategorys/{id}",method = RequestMethod.GET)
-    public TemplateCategory get(@PathVariable Integer id){
+    public TemplateCategory getTemplateCategory(@PathVariable("id") Integer id){
         return templateCategoryService.get(id);
     }
-
     @RequestMapping(value = "/templateCategorys",method = RequestMethod.GET)
-    public List<TemplateCategory> get(){
+    public List<TemplateCategory> getAdvice(){
         return templateCategoryService.getAll();
     }
 }

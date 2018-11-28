@@ -7,6 +7,7 @@ public class UserRechargeRecord {
 
     private String userId;
 
+
     private String type;
 
     private Date date;
@@ -30,6 +31,7 @@ public class UserRechargeRecord {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
 
     public String getType() {
         return type;
