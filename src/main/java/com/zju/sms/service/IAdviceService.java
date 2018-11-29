@@ -1,5 +1,7 @@
 package com.zju.sms.service;
 
+import com.zju.sms.domain.Advice;
+
 import java.util.List;
 
 public interface IAdviceService {
