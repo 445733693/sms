@@ -12,7 +12,7 @@
 </head>
 <body>
 ${errorMsg}
-<form action="/login" method="post">
+<form action="${pageContext.request.contextPath }/login/user" method="post">
     账号：<input name="username" type="text"/><br/>
     密码：<input name="password" type="password"/><br/>
         <input type="submit" value="登陆">

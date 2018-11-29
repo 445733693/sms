@@ -9,10 +9,29 @@
 
     <!--配置自定义reaml-->
     <bean id="userRealm" class="com.zju.sms.shiro.UserRealm"/>
+    <bean id="agentRealm" class="com.zju.sms.shiro.AgentRealm"/>
+    <bean id="adminRealm" class="com.zju.sms.shiro.AdminRealm"/>
+
+    <!--配置自定义的认证器，可以针对不同的登陆类型使用不同的Realm-->
+    <bean id="authenticator" class="com.zju.sms.shiro.MyModularRealmAuthenticator">
+        <!--认证策略，一个Realm认证成功即可，并返回认证信息-->
+        <property name="authenticationStrategy">
+            <bean class="org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy"/>
+        </property>
+    </bean>
 
     <!--配置安全管理器SecurityManager-->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realm" ref="userRealm"/>
+        <!--配置认证器-->
+        <property name="authenticator" ref="authenticator"/>
+        <!--配置多个Realm-->
+        <property name="realms">
+            <list>
+                <ref bean="userRealm"/>
+                <ref bean="agentRealm"/>
+                <ref bean="adminRealm"/>
+            </list>
+        </property>
     </bean>
 
     <!--定义shiroFilter-->
@@ -23,6 +42,7 @@
         <property name="filterChainDefinitions">
             <value>
                 /login=anon
+                /login/**=anon
                 /**=authc
             </value>
         </property>

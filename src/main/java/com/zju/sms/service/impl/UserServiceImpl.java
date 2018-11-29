@@ -38,4 +38,9 @@ public class UserServiceImpl implements IUserService {
     public List<User> getAll() {
         return userMapper.selectAll();
     }
+
+    @Override
+    public User getByUsername(String username) {
+        return userMapper.selectByUsername(username);
+    }
 }

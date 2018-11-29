@@ -10,4 +10,5 @@ public interface IUserService {
     void update(User user);
     User get(String userId);
     List<User> getAll();
+    User getByUsername(String username);
 }

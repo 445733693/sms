@@ -59,4 +59,9 @@
     companyDescription, balance, agentId, priority, status, registerDate
     from `user`
   </select>
+  <select id="selectByUsername" resultMap="BaseResultMap">
+    SELECT *
+    FROM `user`
+    WHERE username=#{username}
+  </select>
 </mapper>
