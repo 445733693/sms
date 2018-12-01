@@ -38,4 +38,9 @@ public class AgentServiceImpl implements IAgentService {
     public List<Agent> getAll() {
         return agentMapper.selectAll();
     }
+
+    @Override
+    public Agent getByUsername(String username) {
+        return agentMapper.selectByUsername(username);
+    }
 }

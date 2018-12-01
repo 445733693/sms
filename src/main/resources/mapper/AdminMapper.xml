@@ -97,4 +97,10 @@
     p_loginTime
     from `admin`
   </select>
+
+  <select id="selectByUsername" resultMap="BaseResultMap">
+    SELECT *
+    FROM admin
+    where username=#{username}
+  </select>
 </mapper>

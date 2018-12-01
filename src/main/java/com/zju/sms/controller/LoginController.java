@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
     Logger log=Logger.getLogger(LoginController.class);
     private static final String USER_LOGIN_TYPE= LoginType.USER.toString();
+    private static final String AGENT_LOGIN_TYPE= LoginType.AGENT.toString();
+    private static final String ADMIN_LOGIN_TYPE= LoginType.ADMIN.toString();
 
     //后端测试转login.jsp用，前后端分离后删去
     @RequestMapping("")
@@ -41,5 +43,35 @@ public class LoginController {
             return "login";
         }
         return "mainuser";
+    }
+
+    @RequestMapping(value = "/agent" ,method = RequestMethod.POST)
+    public String loginagent(@RequestParam(value = "username",required = false) String username,
+                            @RequestParam(value = "password",required = false) String password, Model model){
+        System.out.println("用户登陆验证....");
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordTypeToken(username, password,AGENT_LOGIN_TYPE);
+        try {
+            subject.login(token);
+        }catch (AuthenticationException e){
+            model.addAttribute("errorMsg","账号/密码错误");
+            return "login";
+        }
+        return "mainagent";
+    }
+
+    @RequestMapping(value = "/admin" ,method = RequestMethod.POST)
+    public String loginadmin(@RequestParam(value = "username",required = false) String username,
+                            @RequestParam(value = "password",required = false) String password, Model model){
+        System.out.println("用户登陆验证....");
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordTypeToken(username, password,ADMIN_LOGIN_TYPE);
+        try {
+            subject.login(token);
+        }catch (AuthenticationException e){
+            model.addAttribute("errorMsg","账号/密码错误");
+            return "login";
+        }
+        return "mainadmin";
     }
 }

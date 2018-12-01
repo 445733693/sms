@@ -59,4 +59,9 @@ public class AdminServiceImpl implements IAdminService{
     public List<Admin> getAll() {
         return adminMapper.selectAll();
     }
+
+    @Override
+    public Admin getByUsername(String username) {
+        return adminMapper.selectByUsername(username);
+    }
 }

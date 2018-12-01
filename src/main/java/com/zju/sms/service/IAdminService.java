@@ -10,4 +10,5 @@ public interface IAdminService {
     void update(Admin admin);
     Admin get(String adminId);
     List<Admin> getAll();
+    Admin getByUsername(String username);
 }

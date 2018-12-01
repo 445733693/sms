@@ -10,4 +10,5 @@ public interface IAgentService {
     void update(Agent agent);
     Agent get(String agentId);
     List<Agent> getAll();
+    Agent getByUsername(String username);
 }
