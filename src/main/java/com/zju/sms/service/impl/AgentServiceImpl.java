@@ -1,5 +1,6 @@
 package com.zju.sms.service.impl;
 
+import com.zju.sms.domain.Agent;
 import com.zju.sms.mapper.AgentMapper;
 import com.zju.sms.service.IAgentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class AgentServiceImpl implements IAgentService {
     }
 
     @Override
-    public void delete(String agentId) {
-        agentMapper.deleteByPrimaryKey(agentId);
+    public void delete(Integer id) {
+        agentMapper.deleteByPrimaryKey(id);
     }
 
     @Override
@@ -29,12 +30,17 @@ public class AgentServiceImpl implements IAgentService {
     }
 
     @Override
-    public Agent get(String agentId) {
-        return agentMapper.selectByPrimaryKey(agentId);
+    public Agent get(Integer id) {
+        return agentMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public List<Agent> getAll() {
         return agentMapper.selectAll();
+    }
+
+    @Override
+    public Agent getByUsername(String username) {
+        return agentMapper.selectByUsername(username);
     }
 }

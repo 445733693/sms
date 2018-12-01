@@ -1,5 +1,6 @@
 package com.zju.sms.controller;
 
+import com.zju.sms.domain.Channel;
 import com.zju.sms.service.IChannelService;
 import com.zju.sms.util.UpdateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,11 @@ public class ChannelController {
         return"success";
     }
     @RequestMapping(value = "/channels/{id}",method = RequestMethod.GET)
-    public Channel getAdvice(@PathVariable("id") Integer id){
+    public Channel getChannel(@PathVariable("id") Integer id){
         return channelService.get(id);
     }
     @RequestMapping(value = "/channels",method = RequestMethod.GET)
-    public List<Channel> getAdvice(){
+    public List<Channel> getChannel(){
         return channelService.getAll();
     }
 }

@@ -13,4 +13,6 @@ public interface AdviceMapper {
     List<Advice> selectAll();
 
     int updateByPrimaryKey(Advice record);
+
+    Advice selectByUsername(String username);
 }

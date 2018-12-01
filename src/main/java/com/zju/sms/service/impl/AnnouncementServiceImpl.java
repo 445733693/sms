@@ -1,5 +1,6 @@
 package com.zju.sms.service.impl;
 
+import com.zju.sms.domain.Announcement;
 import com.zju.sms.mapper.AnnouncementMapper;
 import com.zju.sms.service.IAnnouncementService;
 import org.springframework.beans.factory.annotation.Autowired;

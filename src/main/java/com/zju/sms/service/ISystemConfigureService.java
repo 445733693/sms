@@ -1,5 +1,7 @@
 package com.zju.sms.service;
 
+import com.zju.sms.domain.SystemConfigure;
+
 import java.util.List;
 
 public interface ISystemConfigureService {

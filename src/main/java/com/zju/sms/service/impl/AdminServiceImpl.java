@@ -1,5 +1,6 @@
 package com.zju.sms.service.impl;
 
+import com.zju.sms.domain.Admin;
 import com.zju.sms.mapper.AdminMapper;
 import com.zju.sms.service.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,8 @@ public class AdminServiceImpl implements IAdminService{
     }
 
     @Override
-    public void delete(String adminId) {
-        adminMapper.deleteByPrimaryKey(adminId);
+    public void delete(Integer id) {
+        adminMapper.deleteByPrimaryKey(id);
     }
 
     @Override
@@ -50,12 +51,18 @@ public class AdminServiceImpl implements IAdminService{
     }
 
     @Override
-    public Admin get(String adminId) {
-        return adminMapper.selectByPrimaryKey(adminId);
+    public Admin get(Integer id) {
+        return adminMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public List<Admin> getAll() {
         return adminMapper.selectAll();
     }
+
+    @Override
+    public Admin getByUsername(String username) {
+        return adminMapper.selectByUsername(username);
+    }
+
 }

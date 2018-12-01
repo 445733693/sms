@@ -51,4 +51,9 @@
     comment, balance
     from `agent`
   </select>
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select *
+    from `agent`
+    where username=#{username,jdbcType=VARCHAR}
+  </select>
 </mapper>

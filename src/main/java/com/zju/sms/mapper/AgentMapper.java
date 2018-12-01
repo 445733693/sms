@@ -13,4 +13,6 @@ public interface AgentMapper {
     List<Agent> selectAll();
 
     int updateByPrimaryKey(Agent record);
+
+    Agent selectByUsername(String username);
 }

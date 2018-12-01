@@ -61,4 +61,11 @@
     companyAddr, companyDescription, balance, agentId, priority, status, registerDate
     from `user`
   </select>
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select *
+    from `user`
+    where username=#{username,jdbcType=VARCHAR}
+  </select>
+
+
 </mapper>
