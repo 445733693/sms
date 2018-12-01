@@ -1,5 +1,6 @@
 package com.zju.sms.controller;
 
+import com.zju.sms.domain.UserRechargeRecord;
 import com.zju.sms.service.IUserRechargeRecordService;
 import com.zju.sms.util.UpdateUtil;
 import org.springframework.beans.factory.annotation.Autowired;

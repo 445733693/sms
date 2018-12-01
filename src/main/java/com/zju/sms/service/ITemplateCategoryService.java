@@ -1,5 +1,7 @@
 package com.zju.sms.service;
 
+import com.zju.sms.domain.TemplateCategory;
+
 import java.util.List;
 
 public interface ITemplateCategoryService {

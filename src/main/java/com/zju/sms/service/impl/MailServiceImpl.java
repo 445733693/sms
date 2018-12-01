@@ -1,5 +1,6 @@
 package com.zju.sms.service.impl;
 
+import com.zju.sms.domain.Mail;
 import com.zju.sms.mapper.MailMapper;
 import com.zju.sms.service.IMailService;
 import org.springframework.beans.factory.annotation.Autowired;

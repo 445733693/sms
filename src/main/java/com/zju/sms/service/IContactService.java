@@ -1,5 +1,7 @@
 package com.zju.sms.service;
 
+import com.zju.sms.domain.Contact;
+
 import java.util.List;
 
 public interface IContactService {

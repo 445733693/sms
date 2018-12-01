@@ -1,5 +1,6 @@
 package com.zju.sms.service.impl;
 
+import com.zju.sms.domain.ReceiveRecord;
 import com.zju.sms.mapper.ReceiveRecordMapper;
 import com.zju.sms.service.IReceiveRecordService;
 import org.springframework.beans.factory.annotation.Autowired;

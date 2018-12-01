@@ -1,5 +1,6 @@
 package com.zju.sms.service.impl;
 
+import com.zju.sms.domain.Deduction;
 import com.zju.sms.mapper.DeductionMapper;
 import com.zju.sms.service.IDeductionService;
 import org.springframework.beans.factory.annotation.Autowired;

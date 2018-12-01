@@ -1,7 +1,6 @@
 package com.zju.sms.mapper;
 
 import com.zju.sms.domain.Blacklist;
-import com.zju.sms.domain.BlacklistWithBLOBs;
 import java.util.List;
 
 public interface BlacklistMapper {
@@ -9,7 +8,7 @@ public interface BlacklistMapper {
 
     int insert(Blacklist record);
 
-    BlacklistWithBLOBs selectByPrimaryKey(Integer id);
+    Blacklist selectByPrimaryKey(Integer id);
 
     List<Blacklist> selectAll();
 

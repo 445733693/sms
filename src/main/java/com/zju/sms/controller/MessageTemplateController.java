@@ -1,5 +1,6 @@
 package com.zju.sms.controller;
 
+import com.zju.sms.domain.MessageTemplate;
 import com.zju.sms.service.IMessageTemplateService;
 import com.zju.sms.util.UpdateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
