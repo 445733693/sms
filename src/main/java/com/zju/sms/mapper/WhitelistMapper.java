@@ -9,7 +9,7 @@ public interface WhitelistMapper {
     int insert(Whitelist record);
 
     Whitelist selectByPrimaryKey(Integer id);
-    
+
     List<Whitelist> selectAll();
 
     int updateByPrimaryKey(Whitelist record);
