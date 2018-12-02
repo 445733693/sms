@@ -2,6 +2,7 @@ package com.zju.sms.controller;
 
 import com.zju.sms.domain.PhoneLibCategory;
 import com.zju.sms.service.IPhoneLibCategoryService;
+import com.zju.sms.service.impl.PhoneLibCategoryServiceImpl;
 import com.zju.sms.util.UpdateUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,6 +18,7 @@ public class PhoneLibCategoryController {
     private IPhoneLibCategoryService phoneLibCategoryService;
 
     @RequestMapping(value = "/phoneLibCategorys",method = RequestMethod.POST)
+    @ApiOperation(value = "添加号码库分类" ,notes = "增加一条号码库记录",httpMethod = "POST")
     public String saveCategory(@RequestBody PhoneLibCategory phoneLibCategory){
         phoneLibCategoryService.save(phoneLibCategory);
         return"success";
