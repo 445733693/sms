@@ -20,8 +20,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void delete(String userId) {
-        userMapper.deleteByPrimaryKey(userId);
+    public void delete(Integer id) {
+        userMapper.deleteByPrimaryKey(id);
     }
 
     @Override
@@ -30,8 +30,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User get(String userId) {
-        return userMapper.selectByPrimaryKey(userId);
+    public User get(Integer id) {
+        return userMapper.selectByPrimaryKey(id);
     }
 
     @Override

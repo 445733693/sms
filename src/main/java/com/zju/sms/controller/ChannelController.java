@@ -31,11 +31,11 @@ public class ChannelController {
         return"success";
     }
     @RequestMapping(value = "/channels/{id}",method = RequestMethod.GET)
-    public Channel getAdvice(@PathVariable("id") Integer id){
+    public Channel getChannel(@PathVariable("id") Integer id){
         return channelService.get(id);
     }
     @RequestMapping(value = "/channels",method = RequestMethod.GET)
-    public List<Channel> getAdvice(){
+    public List<Channel> getChannel(){
         return channelService.getAll();
     }
 }

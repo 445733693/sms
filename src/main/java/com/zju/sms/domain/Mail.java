@@ -1,10 +1,11 @@
 package com.zju.sms.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Mail {
     private Integer id;
+
+    private Integer agentId;
 
     private String context;
 
@@ -20,6 +21,14 @@ public class Mail {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(Integer agentId) {
+        this.agentId = agentId;
     }
 
     public String getContext() {

@@ -39,4 +39,5 @@ public class AdviceServiceImpl implements IAdviceService {
     public List<Advice> getAll() {
         return adviceMapper.selectAll();
     }
+
 }

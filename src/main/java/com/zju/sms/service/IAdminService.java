@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface IAdminService {
     void save(Admin admin);
-    void delete(String adminId);
+    void delete(Integer id);
     void update(Admin admin);
-    Admin get(String adminId);
+    Admin get(Integer id);
     List<Admin> getAll();
     Admin getByUsername(String username);
 }

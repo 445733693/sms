@@ -3,7 +3,7 @@
 <mapper namespace="com.zju.sms.mapper.MessageTemplateMapper" >
   <resultMap id="BaseResultMap" type="com.zju.sms.domain.MessageTemplate" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
     <result column="category" property="category" jdbcType="VARCHAR" />
     <result column="context" property="context" jdbcType="VARCHAR" />
     <result column="date" property="date" jdbcType="TIMESTAMP" />
@@ -15,12 +15,12 @@
   <insert id="insert" parameterType="com.zju.sms.domain.MessageTemplate" useGeneratedKeys="true" keyProperty="id" >
     insert into `messagetemplate` (userId, category, context, 
       date)
-    values (#{userId,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, #{context,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=INTEGER}, #{category,jdbcType=VARCHAR}, #{context,jdbcType=VARCHAR}, 
       #{date,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.MessageTemplate" >
     update `messagetemplate`
-    set userId = #{userId,jdbcType=VARCHAR},
+    set userId = #{userId,jdbcType=INTEGER},
       category = #{category,jdbcType=VARCHAR},
       context = #{context,jdbcType=VARCHAR},
       date = #{date,jdbcType=TIMESTAMP}

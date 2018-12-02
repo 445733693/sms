@@ -12,32 +12,32 @@ import java.util.List;
 @Service
 public class ContactCategoryServiceImpl implements IContactCategoryService{
     @Autowired
-    private ContactCategoryMapper mapper;
+    private ContactCategoryMapper contactCategoryMapper;
     @Override
     public void save(ContactCategory contactCategory) {
         contactCategory.setDate(new Date());
         contactCategory.setNumber(0);
-        mapper.insert(contactCategory);
+        contactCategoryMapper.insert(contactCategory);
     }
 
     @Override
-    public void delete(String  userId) {
-
+    public void delete(Integer id) {
+        contactCategoryMapper.deleteByPrimaryKey(id);
     }
 
     @Override
     public void update(ContactCategory contactCategory) {
-
+        contactCategoryMapper.updateByPrimaryKey(contactCategory);
     }
 
     @Override
-    public ContactCategory get(String  userId) {
-        return null;
+    public ContactCategory get(Integer id) {
+        return contactCategoryMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public List<ContactCategory> getAll() {
-        return null;
+        return contactCategoryMapper.selectAll();
     }
 
 }

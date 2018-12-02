@@ -1,7 +1,9 @@
 package com.zju.sms.domain;
 
 public class Agent {
-    private String agentId;
+    private Integer id;
+
+    private String username;
 
     private String password;
 
@@ -19,12 +21,20 @@ public class Agent {
 
     private Integer balance;
 
-    public String getAgentId() {
-        return agentId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setAgentId(String agentId) {
-        this.agentId = agentId;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

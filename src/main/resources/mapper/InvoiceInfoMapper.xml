@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zju.sms.mapper.InvoiceInfoMapper" >
   <resultMap id="BaseResultMap" type="com.zju.sms.domain.InvoiceInfo" >
-    <id column="userId" property="userId" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="contact" property="contact" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
@@ -11,36 +12,37 @@
     <result column="invoiceRequest" property="invoiceRequest" jdbcType="TINYINT" />
     <result column="comment" property="comment" jdbcType="VARCHAR" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from `invoiceinfo`
-    where userId = #{userId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zju.sms.domain.InvoiceInfo" >
+  <insert id="insert" parameterType="com.zju.sms.domain.InvoiceInfo" useGeneratedKeys="true" keyProperty="id" >
     insert into `invoiceinfo` (userId, title, contact, 
       phone, address, zip, 
       invoiceRequest, comment)
-    values (#{userId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, 
       #{invoiceRequest,jdbcType=TINYINT}, #{comment,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.InvoiceInfo" >
     update `invoiceinfo`
-    set title = #{title,jdbcType=VARCHAR},
+    set userId = #{userId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
       contact = #{contact,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       zip = #{zip,jdbcType=VARCHAR},
       invoiceRequest = #{invoiceRequest,jdbcType=TINYINT},
       comment = #{comment,jdbcType=VARCHAR}
-    where userId = #{userId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select userId, title, contact, phone, address, zip, invoiceRequest, comment
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, userId, title, contact, phone, address, zip, invoiceRequest, comment
     from `invoiceinfo`
-    where userId = #{userId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select userId, title, contact, phone, address, zip, invoiceRequest, comment
+    select id, userId, title, contact, phone, address, zip, invoiceRequest, comment
     from `invoiceinfo`
   </select>
 </mapper>

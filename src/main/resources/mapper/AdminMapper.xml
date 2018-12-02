@@ -1,39 +1,40 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zju.sms.mapper.AdminMapper" >
-  <resultMap id="BaseResultMap" type="com.zju.sms.domain.Admin" >
-    <id column="adminId" property="adminId" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="addDate" property="addDate" jdbcType="TIMESTAMP" />
-    <result column="loginIP" property="loginIP" jdbcType="VARCHAR" />
-    <result column="loginDate" property="loginDate" jdbcType="TIMESTAMP" />
-    <result column="comment" property="comment" jdbcType="VARCHAR" />
-    <result column="p_adminList" property="p_adminList" jdbcType="BIT" />
-    <result column="p_keyword" property="p_keyword" jdbcType="BIT" />
-    <result column="p_agentRechargeRecord" property="p_agentRechargeRecord" jdbcType="BIT" />
-    <result column="p_blackWhiteList" property="p_blackWhiteList" jdbcType="BIT" />
-    <result column="p_messageReview" property="p_messageReview" jdbcType="BIT" />
-    <result column="p_changePassword" property="p_changePassword" jdbcType="BIT" />
-    <result column="p_channel" property="p_channel" jdbcType="BIT" />
-    <result column="p_phoneLib" property="p_phoneLib" jdbcType="BIT" />
-    <result column="p_userRechargeRecord" property="p_userRechargeRecord" jdbcType="BIT" />
-    <result column="p_userExpenseRecord" property="p_userExpenseRecord" jdbcType="BIT" />
-    <result column="p_configureDeduction" property="p_configureDeduction" jdbcType="BIT" />
-    <result column="p_agentList" property="p_agentList" jdbcType="BIT" />
-    <result column="p_sendRecord" property="p_sendRecord" jdbcType="BIT" />
-    <result column="p_rechargeSolution" property="p_rechargeSolution" jdbcType="BIT" />
-    <result column="p_agentRecharge" property="p_agentRecharge" jdbcType="BIT" />
-    <result column="p_userRecharge" property="p_userRecharge" jdbcType="BIT" />
-    <result column="p_userList" property="p_userList" jdbcType="BIT" />
-    <result column="p_announcement" property="p_announcement" jdbcType="BIT" />
-    <result column="p_loginTime" property="p_loginTime" jdbcType="BIT" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zju.sms.mapper.AdminMapper">
+  <resultMap id="BaseResultMap" type="com.zju.sms.domain.Admin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="addDate" jdbcType="TIMESTAMP" property="addDate" />
+    <result column="loginIP" jdbcType="VARCHAR" property="loginIP" />
+    <result column="loginDate" jdbcType="TIMESTAMP" property="loginDate" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="p_adminList" jdbcType="BIT" property="p_adminList" />
+    <result column="p_keyword" jdbcType="BIT" property="p_keyword" />
+    <result column="p_agentRechargeRecord" jdbcType="BIT" property="p_agentRechargeRecord" />
+    <result column="p_blackWhiteList" jdbcType="BIT" property="p_blackWhiteList" />
+    <result column="p_messageReview" jdbcType="BIT" property="p_messageReview" />
+    <result column="p_changePassword" jdbcType="BIT" property="p_changePassword" />
+    <result column="p_channel" jdbcType="BIT" property="p_channel" />
+    <result column="p_phoneLib" jdbcType="BIT" property="p_phoneLib" />
+    <result column="p_userRechargeRecord" jdbcType="BIT" property="p_userRechargeRecord" />
+    <result column="p_userExpenseRecord" jdbcType="BIT" property="p_userExpenseRecord" />
+    <result column="p_configureDeduction" jdbcType="BIT" property="p_configureDeduction" />
+    <result column="p_agentList" jdbcType="BIT" property="p_agentList" />
+    <result column="p_sendRecord" jdbcType="BIT" property="p_sendRecord" />
+    <result column="p_rechargeSolution" jdbcType="BIT" property="p_rechargeSolution" />
+    <result column="p_agentRecharge" jdbcType="BIT" property="p_agentRecharge" />
+    <result column="p_userRecharge" jdbcType="BIT" property="p_userRecharge" />
+    <result column="p_userList" jdbcType="BIT" property="p_userList" />
+    <result column="p_announcement" jdbcType="BIT" property="p_announcement" />
+    <result column="p_loginTime" jdbcType="BIT" property="p_loginTime" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from `admin`
-    where adminId = #{adminId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zju.sms.domain.Admin" >
-    insert into `admin` (adminId, password, addDate, 
+  <insert id="insert" keyProperty="id" parameterType="com.zju.sms.domain.Admin" useGeneratedKeys="true">
+    insert into `admin` (username, password, addDate, 
       loginIP, loginDate, comment, 
       p_adminList, p_keyword, p_agentRechargeRecord, 
       p_blackWhiteList, p_messageReview, p_changePassword, 
@@ -42,7 +43,7 @@
       p_sendRecord, p_rechargeSolution, p_agentRecharge, 
       p_userRecharge, p_userList, p_announcement, 
       p_loginTime)
-    values (#{adminId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{addDate,jdbcType=TIMESTAMP}, 
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{addDate,jdbcType=TIMESTAMP}, 
       #{loginIP,jdbcType=VARCHAR}, #{loginDate,jdbcType=TIMESTAMP}, #{comment,jdbcType=VARCHAR}, 
       #{p_adminList,jdbcType=BIT}, #{p_keyword,jdbcType=BIT}, #{p_agentRechargeRecord,jdbcType=BIT}, 
       #{p_blackWhiteList,jdbcType=BIT}, #{p_messageReview,jdbcType=BIT}, #{p_changePassword,jdbcType=BIT}, 
@@ -52,9 +53,10 @@
       #{p_userRecharge,jdbcType=BIT}, #{p_userList,jdbcType=BIT}, #{p_announcement,jdbcType=BIT}, 
       #{p_loginTime,jdbcType=BIT})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.Admin" >
+  <update id="updateByPrimaryKey" parameterType="com.zju.sms.domain.Admin">
     update `admin`
-    set password = #{password,jdbcType=VARCHAR},
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
       addDate = #{addDate,jdbcType=TIMESTAMP},
       loginIP = #{loginIP,jdbcType=VARCHAR},
       loginDate = #{loginDate,jdbcType=TIMESTAMP},
@@ -78,29 +80,28 @@
       p_userList = #{p_userList,jdbcType=BIT},
       p_announcement = #{p_announcement,jdbcType=BIT},
       p_loginTime = #{p_loginTime,jdbcType=BIT}
-    where adminId = #{adminId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select adminId, password, addDate, loginIP, loginDate, comment, p_adminList, p_keyword, 
-    p_agentRechargeRecord, p_blackWhiteList, p_messageReview, p_changePassword, p_channel, 
-    p_phoneLib, p_userRechargeRecord, p_userExpenseRecord, p_configureDeduction, p_agentList, 
-    p_sendRecord, p_rechargeSolution, p_agentRecharge, p_userRecharge, p_userList, p_announcement, 
-    p_loginTime
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, username, password, addDate, loginIP, loginDate, comment, p_adminList, 
+    p_keyword, p_agentRechargeRecord, p_blackWhiteList, p_messageReview, p_changePassword, 
+    p_channel, p_phoneLib, p_userRechargeRecord, p_userExpenseRecord, p_configureDeduction, 
+    p_agentList, p_sendRecord, p_rechargeSolution, p_agentRecharge, p_userRecharge, p_userList, 
+    p_announcement, p_loginTime
     from `admin`
-    where adminId = #{adminId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
-    select adminId, password, addDate, loginIP, loginDate, comment, p_adminList, p_keyword, 
-    p_agentRechargeRecord, p_blackWhiteList, p_messageReview, p_changePassword, p_channel, 
-    p_phoneLib, p_userRechargeRecord, p_userExpenseRecord, p_configureDeduction, p_agentList, 
-    p_sendRecord, p_rechargeSolution, p_agentRecharge, p_userRecharge, p_userList, p_announcement, 
-    p_loginTime
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, username, password, addDate, loginIP, loginDate, comment, p_adminList, 
+    p_keyword, p_agentRechargeRecord, p_blackWhiteList, p_messageReview, p_changePassword, 
+    p_channel, p_phoneLib, p_userRechargeRecord, p_userExpenseRecord, p_configureDeduction, 
+    p_agentList, p_sendRecord, p_rechargeSolution, p_agentRecharge, p_userRecharge, p_userList, 
+    p_announcement, p_loginTime
     from `admin`
   </select>
-
-  <select id="selectByUsername" resultMap="BaseResultMap">
-    SELECT *
-    FROM admin
-    where username=#{username}
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select *
+    from `admin`
+    where username=#{username,jdbcType=VARCHAR}
   </select>
 </mapper>

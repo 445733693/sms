@@ -3,7 +3,9 @@ package com.zju.sms.domain;
 import java.util.Date;
 
 public class User {
-    private String userId;
+    private Integer id;
+
+    private String username;
 
     private String password;
 
@@ -21,7 +23,7 @@ public class User {
 
     private Integer balance;
 
-    private String agentId;
+    private Integer agentId;
 
     private String priority;
 
@@ -29,22 +31,20 @@ public class User {
 
     private Date registerDate;
 
-    private String type;
-
-    public String getType() {
-        return type;
+    public Integer getId() {
+        return id;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -111,11 +111,11 @@ public class User {
         this.balance = balance;
     }
 
-    public String getAgentId() {
+    public Integer getAgentId() {
         return agentId;
     }
 
-    public void setAgentId(String agentId) {
+    public void setAgentId(Integer agentId) {
         this.agentId = agentId;
     }
 

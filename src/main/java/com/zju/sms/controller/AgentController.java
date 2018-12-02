@@ -20,22 +20,26 @@ public class AgentController {
     }
     @RequestMapping(value = "/agents",method = RequestMethod.PUT)
     public String updateAgent(@RequestBody Agent agent){
-        Agent old = agentService.get(agent.getAgentId());
+        Agent old = agentService.get(agent.getId());
         UpdateUtil.updateIfNotNull(old,agent);
         agentService.update(old);
         return"success";
     }
     @RequestMapping(value = "/agents/{id}",method = RequestMethod.DELETE)
-    public String deleteAgent(@PathVariable("id") String agentId){
-        agentService.delete(agentId);
+    public String deleteAgent(@PathVariable("id") Integer id){
+        agentService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/agents/{id}",method = RequestMethod.GET)
-    public Agent getAgent(@PathVariable("id") String agentId){
-        return agentService.get(agentId);
+    public Agent getAgent(@PathVariable("id") Integer id){
+        return agentService.get(id);
     }
     @RequestMapping(value = "/agents",method = RequestMethod.GET)
     public List<Agent> getAgent(){
         return agentService.getAll();
     }
+//    @RequestMapping(value = "/agents",method = RequestMethod.GET)
+//    public Agent getAgentUser(@RequestBody String username){
+//        return agentService.getByUsername(username);
+//    }
 }

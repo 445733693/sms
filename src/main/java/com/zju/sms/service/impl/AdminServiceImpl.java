@@ -41,8 +41,8 @@ public class AdminServiceImpl implements IAdminService{
     }
 
     @Override
-    public void delete(String adminId) {
-        adminMapper.deleteByPrimaryKey(adminId);
+    public void delete(Integer id) {
+        adminMapper.deleteByPrimaryKey(id);
     }
 
     @Override
@@ -51,8 +51,8 @@ public class AdminServiceImpl implements IAdminService{
     }
 
     @Override
-    public Admin get(String adminId) {
-        return adminMapper.selectByPrimaryKey(adminId);
+    public Admin get(Integer id) {
+        return adminMapper.selectByPrimaryKey(id);
     }
 
     @Override
@@ -64,4 +64,5 @@ public class AdminServiceImpl implements IAdminService{
     public Admin getByUsername(String username) {
         return adminMapper.selectByUsername(username);
     }
+
 }

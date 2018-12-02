@@ -26,13 +26,13 @@ public class InvoiceInfoController {
         return"success";
     }
     @RequestMapping(value = "/invoiceInfos/{id}",method = RequestMethod.DELETE)
-    public String deleteInvoiceInfo(@PathVariable("id") String userId){
-        invoiceInfoService.delete(userId);
+    public String deleteInvoiceInfo(@PathVariable("id") Integer id){
+        invoiceInfoService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/invoiceInfos/{id}",method = RequestMethod.GET)
-    public InvoiceInfo getInvoiceInfo(@PathVariable("id") String userId){
-        return invoiceInfoService.get(userId);
+    public InvoiceInfo getInvoiceInfo(@PathVariable("id") Integer id){
+        return invoiceInfoService.get(id);
     }
     @RequestMapping(value = "/invoiceInfos",method = RequestMethod.GET)
     public List<InvoiceInfo> getAdvice(){

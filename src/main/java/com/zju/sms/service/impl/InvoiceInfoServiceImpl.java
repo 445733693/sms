@@ -18,8 +18,8 @@ public class InvoiceInfoServiceImpl implements IInvoiceInfoService {
     }
 
     @Override
-    public void delete(String userId) {
-        invoiceInfoMapper.deleteByPrimaryKey(userId);
+    public void delete(Integer id) {
+        invoiceInfoMapper.deleteByPrimaryKey(id);
     }
 
     @Override
@@ -28,8 +28,8 @@ public class InvoiceInfoServiceImpl implements IInvoiceInfoService {
     }
 
     @Override
-    public InvoiceInfo get(String userId) {
-        return invoiceInfoMapper.selectByPrimaryKey(userId);
+    public InvoiceInfo get(Integer id) {
+        return invoiceInfoMapper.selectByPrimaryKey(id);
     }
 
     @Override

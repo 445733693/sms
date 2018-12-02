@@ -3,7 +3,9 @@ package com.zju.sms.domain;
 import java.util.Date;
 
 public class ContactCategory {
-    private String userId;
+    private Integer id;
+
+    private Integer userId;
 
     private String categoryName;
 
@@ -13,11 +15,19 @@ public class ContactCategory {
 
     private Integer number;
 
-    public String getUserId() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
