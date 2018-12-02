@@ -51,9 +51,21 @@
         <commons-lang.version>2.6</commons-lang.version>
         <aopalliance.version>1.0</aopalliance.version>
         <mybatis-generator.version>1.3.5</mybatis-generator.version>
+        <swagger2-version>2.7.0</swagger2-version>
     </properties>
 
     <dependencies>
+        <!--swagger2的依赖-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger2-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger2-version}</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
