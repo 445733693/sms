@@ -89,7 +89,7 @@
             <version>2.6.8</version>
         </dependency>
 
-    <dependencies>
+
         <!--swagger2的依赖-->
         <dependency>
             <groupId>io.springfox</groupId>
