@@ -35,7 +35,8 @@ public class KeywordController {
         return keywordService.get(id);
     }
     @RequestMapping(value = "/keywords",method = RequestMethod.GET)
-    public List<Keyword> getAdvice(){
+
+    public List<Keyword> getKeyword(){
         return keywordService.getAll();
     }
 }
