@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresPermissions("userRechargeRecords")
-@PermissionName("终端用户充值记录")
 public class UserRechargeRecordController {
     @Autowired
     private IUserRechargeRecordService userRechargeRecordService;
@@ -30,15 +28,21 @@ public class UserRechargeRecordController {
         return"success";
     }
     @RequestMapping(value = "/userRechargeRecords/{id}",method = RequestMethod.DELETE)
+    @RequiresPermissions("userRechargeRecords:delete")
+    @PermissionName("用户充值记录删除")
     public String deleteUserRechargeRecord(@PathVariable("id") Integer id){
         userRechargeRecordService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/userRechargeRecords/{id}",method = RequestMethod.GET)
+    @RequiresPermissions("userRechargeRecords:get")
+    @PermissionName("用户充值记录查询")
     public UserRechargeRecord getUserRechargeRecord(@PathVariable("id") Integer id){
         return userRechargeRecordService.get(id);
     }
     @RequestMapping(value = "/userRechargeRecords",method = RequestMethod.GET)
+    @RequiresPermissions("userRechargeRecords:list")
+    @PermissionName("用户充值记录列表")
     public List<UserRechargeRecord> getAdvice(){
         return userRechargeRecordService.getAll();
     }

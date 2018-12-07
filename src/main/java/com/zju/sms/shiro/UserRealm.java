@@ -17,13 +17,13 @@ import java.util.List;
 public class UserRealm extends AuthorizingRealm {
     @Autowired
     private IUserService userService;
-
+//用户静态权限
 //"admins","advices","agents","agentRechargeRecords","announcements","blacklists","channels","contactCategorys","contacts","deductions","expenseRecords","invoiceInfos","keywords","mails","messageDrafts","messageTemplates","phoneLibCategorys","phoneLibs","receiveRecords","rechargeSolutions","sendRecords","systemConfigures","templateCategorys","users","userRechargeRecords","whitelists",
     //用户权限：用户界面功能的权限：修改个人信息，建议，联系人分类，联系人，消费记录，发票，草稿，短信模板，接收记录，发送记录，模板分类，用户充值记录
-  /*  private static List<String> permissions= new ArrayList<>(Arrays.asList("users","advices","contactCategorys",
-        "contacts","expenseRecords","invoiceInfos","messageDrafts","messageTemplates","receiveRecords",
-        "sendRecords","templateCategorys","userRechargeRecords"));*/
-    private static List<String> permissions= new ArrayList<>();
+    private static List<String> permissions= new ArrayList<>(Arrays.asList("users:edit","advices:*","contactCategorys:*",
+        "contacts:*","expenseRecords:*","invoiceInfos:*","messageDrafts:*","messageTemplates:*","receiveRecords:*",
+        "sendRecords:*","templateCategorys:*","userRechargeRecords:*"));
+//    private static List<String> permissions= new ArrayList<>();
 
     @Override
     public String getName(){

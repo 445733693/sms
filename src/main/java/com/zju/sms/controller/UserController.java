@@ -11,18 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresPermissions("users")
-@PermissionName("终端用户账户")
 public class UserController {
     @Autowired
     private IUserService userService;
 
     @RequestMapping(value = "/users",method = RequestMethod.POST)
+    @RequiresPermissions("users:save")
+    @PermissionName("终端用户账户添加")
     public String saveUser(@RequestBody User user){
         userService.save(user);
         return"success";
     }
     @RequestMapping(value = "/users",method = RequestMethod.PUT)
+    @RequiresPermissions("users:edit")
+    @PermissionName("终端用户账户修改")
     public String updateUser(@RequestBody User user){
         User old = userService.get(user.getId());
         UpdateUtil.updateIfNotNull(old,user);
@@ -30,15 +32,21 @@ public class UserController {
         return"success";
     }
     @RequestMapping(value = "/users/{id}",method = RequestMethod.DELETE)
+    @RequiresPermissions("users:delete")
+    @PermissionName("终端用户账户删除")
     public String deleteUser(@PathVariable("id") Integer id){
         userService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/users/{id}",method = RequestMethod.GET)
+    @RequiresPermissions("users:get")
+    @PermissionName("终端用户账户查询")
     public User getUser(@PathVariable("id") Integer id){
         return userService.get(id);
     }
     @RequestMapping(value = "/users",method = RequestMethod.GET)
+    @RequiresPermissions("users:list")
+    @PermissionName("终端用户账户列表")
     public List<User> getUser(){
         return userService.getAll();
     }

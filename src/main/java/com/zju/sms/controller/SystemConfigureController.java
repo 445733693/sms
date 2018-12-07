@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresPermissions("systemConfigures")
-@PermissionName("系统设置")
 public class SystemConfigureController {
     @Autowired
     private ISystemConfigureService systemConfigureService;
@@ -23,6 +21,8 @@ public class SystemConfigureController {
         return"success";
     }
     @RequestMapping(value = "/systemConfigures",method = RequestMethod.PUT)
+    @RequiresPermissions("systemConfigures:edit")
+    @PermissionName("系统设置修改")
     public String updateSystemConfigure(@RequestBody SystemConfigure systemConfigure){
         SystemConfigure old = systemConfigureService.get(systemConfigure.getId());
         UpdateUtil.updateIfNotNull(old,systemConfigure);
@@ -35,10 +35,14 @@ public class SystemConfigureController {
         return"success";
     }
     @RequestMapping(value = "/systemConfigures/{id}",method = RequestMethod.GET)
+    @RequiresPermissions("systemConfigures:get")
+    @PermissionName("系统设置查询")
     public SystemConfigure getSystemConfigure(@PathVariable("id") Integer id){
         return systemConfigureService.get(id);
     }
     @RequestMapping(value = "/systemConfigures",method = RequestMethod.GET)
+    @RequiresPermissions("systemConfigures:list")
+    @PermissionName("系统设置列表")
     public List<SystemConfigure> getAdvice(){
         return systemConfigureService.getAll();
     }

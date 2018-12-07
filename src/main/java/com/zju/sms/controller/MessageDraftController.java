@@ -11,18 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresPermissions("messageDrafts")
-@PermissionName("短信草稿")
 public class MessageDraftController {
     @Autowired
     private IMessageDraftService messageDraftService;
 
     @RequestMapping(value = "/messageDrafts",method = RequestMethod.POST)
+    @RequiresPermissions("messageDrafts:save")
+    @PermissionName("草稿添加")
     public String saveMessageDraft(@RequestBody MessageDraft messageDraft){
         messageDraftService.save(messageDraft);
         return"success";
     }
     @RequestMapping(value = "/messageDrafts",method = RequestMethod.PUT)
+    @RequiresPermissions("messageDrafts:edit")
+    @PermissionName("草稿修改")
     public String updateMessageDraft(@RequestBody MessageDraft messageDraft){
         MessageDraft old = messageDraftService.get(messageDraft.getId());
         UpdateUtil.updateIfNotNull(old,messageDraft);
@@ -30,15 +32,21 @@ public class MessageDraftController {
         return"success";
     }
     @RequestMapping(value = "/messageDrafts/{id}",method = RequestMethod.DELETE)
+    @RequiresPermissions("messageDrafts:delete")
+    @PermissionName("草稿删除")
     public String deleteMessageDraft(@PathVariable("id") Integer id){
         messageDraftService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/messageDrafts/{id}",method = RequestMethod.GET)
+    @RequiresPermissions("messageDrafts:get")
+    @PermissionName("草稿查询")
     public MessageDraft getMessageDraft(@PathVariable("id") Integer id){
         return messageDraftService.get(id);
     }
     @RequestMapping(value = "/messageDrafts",method = RequestMethod.GET)
+    @RequiresPermissions("messageDrafts:list")
+    @PermissionName("草稿列表")
     public List<MessageDraft> getMessageDraft(){
         return messageDraftService.getAll();
     }

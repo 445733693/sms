@@ -11,18 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresPermissions("blacklists")
-@PermissionName("黑名单")
 public class BlacklistController {
     @Autowired
     private IBlacklistService blacklistService;
 
     @RequestMapping(value = "/blacklists",method = RequestMethod.POST)
+    @RequiresPermissions("blacklists:save")
+    @PermissionName("黑名单添加")
     public String saveBlacklist(@RequestBody Blacklist blacklist){
         blacklistService.save(blacklist);
         return"success";
     }
     @RequestMapping(value = "/blacklists",method = RequestMethod.PUT)
+    @RequiresPermissions("blacklists:edit")
+    @PermissionName("黑名单修改")
     public String updateBlacklist(@RequestBody Blacklist blacklist){
         Blacklist old = blacklistService.get(blacklist.getId());
         UpdateUtil.updateIfNotNull(old,blacklist);
@@ -30,15 +32,22 @@ public class BlacklistController {
         return"success";
     }
     @RequestMapping(value = "/blacklists/{id}",method = RequestMethod.DELETE)
+    @RequiresPermissions("blacklists:delete")
+    @PermissionName("黑名单删除")
     public String deleteBlacklist(@PathVariable("id") Integer id){
         blacklistService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/blacklists/{id}",method = RequestMethod.GET)
+    @RequiresPermissions("blacklists:get")
+    @PermissionName("黑名单查询")
     public Blacklist getBlacklist(@PathVariable("id") Integer id){
         return blacklistService.get(id);
     }
+
     @RequestMapping(value = "/blacklists",method = RequestMethod.GET)
+    @RequiresPermissions("blacklists:list")
+    @PermissionName("黑名单列表")
     public List<Blacklist> getAdvice(){
         return blacklistService.getAll();
     }

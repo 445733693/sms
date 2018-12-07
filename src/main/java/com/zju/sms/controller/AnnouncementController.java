@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresPermissions("announcements")
-@PermissionName("公告")
 public class AnnouncementController {
     @Autowired
     private IAnnouncementService announcementService;
 
     @RequestMapping(value = "/announcements",method = RequestMethod.POST)
+    @RequiresPermissions("announcements:save")
+    @PermissionName("公告添加")
     public String saveAnnouncement(@RequestBody Announcement announcement){
         announcementService.save(announcement);
         return"success";
@@ -30,15 +30,22 @@ public class AnnouncementController {
         return"success";
     }
     @RequestMapping(value = "/announcements/{id}",method = RequestMethod.DELETE)
+    @RequiresPermissions("announcements:delete")
+    @PermissionName("公告删除")
     public String deleteAnnouncement(@PathVariable("id") Integer id){
         announcementService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/announcements/{id}",method = RequestMethod.GET)
+    @RequiresPermissions("announcements:get")
+    @PermissionName("公告查询")
     public Announcement getAnnouncement(@PathVariable("id") Integer id){
         return announcementService.get(id);
     }
+
     @RequestMapping(value = "/announcements",method = RequestMethod.GET)
+    @RequiresPermissions("announcements:list")
+    @PermissionName("公告列表")
     public List<Announcement> getAnnouncement(){
         return announcementService.getAll();
     }

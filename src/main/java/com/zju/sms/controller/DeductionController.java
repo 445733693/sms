@@ -11,18 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresPermissions("deductions")
-@PermissionName("扣量")
 public class DeductionController {
     @Autowired
     private IDeductionService deductionService;
 
     @RequestMapping(value = "/deductions",method = RequestMethod.POST)
+    @RequiresPermissions("contacts:save")
+    @PermissionName("扣量添加")
     public String saveDeduction(@RequestBody Deduction deduction){
         deductionService.save(deduction);
         return"success";
     }
     @RequestMapping(value = "/deductions",method = RequestMethod.PUT)
+    @RequiresPermissions("contacts:edit")
+    @PermissionName("扣量修改")
     public String updateDeduction(@RequestBody Deduction deduction){
         Deduction old = deductionService.get(deduction.getId());
         UpdateUtil.updateIfNotNull(old,deduction);
@@ -30,15 +32,21 @@ public class DeductionController {
         return"success";
     }
     @RequestMapping(value = "/deductions/{id}",method = RequestMethod.DELETE)
+    @RequiresPermissions("contacts:delete")
+    @PermissionName("扣量删除")
     public String deleteDeduction(@PathVariable("id") Integer id){
         deductionService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/deductions/{id}",method = RequestMethod.GET)
+    @RequiresPermissions("contacts:get")
+    @PermissionName("扣量查询")
     public Deduction getDeduction(@PathVariable("id") Integer id){
         return deductionService.get(id);
     }
     @RequestMapping(value = "/deductions",method = RequestMethod.GET)
+    @RequiresPermissions("contacts:list")
+    @PermissionName("扣量列表")
     public List<Deduction> getDeduction(){
         return deductionService.getAll();
     }

@@ -76,6 +76,7 @@
         <!--<property name="sqlSessionFactoryBeanName" value="sqlSession" />-->
     </bean>
 
-
+    <!--用户加载权限时获取所有RequestMapping方法-->
+    <bean id="requestMappingHandlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
 
 </beans>

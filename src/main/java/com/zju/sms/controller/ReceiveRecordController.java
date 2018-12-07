@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresPermissions("receiveRecords")
-@PermissionName("接收记录")
 public class ReceiveRecordController {
     @Autowired
     private IReceiveRecordService receiveRecordService;
@@ -30,15 +28,21 @@ public class ReceiveRecordController {
         return"success";
     }
     @RequestMapping(value = "/receiveRecords/{id}",method = RequestMethod.DELETE)
+    @RequiresPermissions("receiveRecords:delete")
+    @PermissionName("接收记录删除")
     public String deleteReceiveRecord(@PathVariable("id") Integer id){
         receiveRecordService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/receiveRecords/{id}",method = RequestMethod.GET)
+    @RequiresPermissions("receiveRecords:get")
+    @PermissionName("接收记录查询")
     public ReceiveRecord getReceiveRecord(@PathVariable("id") Integer id){
         return receiveRecordService.get(id);
     }
     @RequestMapping(value = "/receiveRecords",method = RequestMethod.GET)
+    @RequiresPermissions("receiveRecords:list")
+    @PermissionName("接收记录列表")
     public List<ReceiveRecord> getAdvice(){
         return receiveRecordService.getAll();
     }

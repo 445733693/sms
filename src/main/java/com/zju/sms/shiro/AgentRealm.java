@@ -12,9 +12,18 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class AgentRealm extends AuthorizingRealm{
     @Autowired
     private IAgentService agentService;
+//代理商静态权限
+    private static List<String> permissions= new ArrayList<>(Arrays.asList(
+            "agentRechargeRecords:*","expenseRecords:*","keywords:*","mails:*",
+            "receiveRecords:*","sendRecords:*","users:*","userRechargeRecords:*"));
+
     @Override
     public String getName() {
         return "AgentRealm";
@@ -23,6 +32,7 @@ public class AgentRealm extends AuthorizingRealm{
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         System.out.println("AgentRealm授权.......");
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        info.addStringPermissions(permissions);
         return info;
     }
 

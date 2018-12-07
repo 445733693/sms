@@ -11,18 +11,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresPermissions("admins")
-@PermissionName("管理员账户")
 public class AdminController {
     @Autowired
     private IAdminService adminService;
 
     @RequestMapping(value = "/admins",method = RequestMethod.POST)
+    @RequiresPermissions("admins:save")
+    @PermissionName("管理员账户添加")
     public String saveAdmin(@RequestBody Admin admin){
+
         adminService.save(admin);
         return"success";
     }
     @RequestMapping(value = "/admins",method = RequestMethod.PUT)
+    @RequiresPermissions("admins:edit")
+    @PermissionName("管理员账户修改")
     public String updateAdmin(@RequestBody Admin admin){
         Admin old = adminService.get(admin.getId());
         UpdateUtil.updateIfNotNull(old,admin);
@@ -30,15 +33,22 @@ public class AdminController {
         return"success";
     }
     @RequestMapping(value = "/admins/{id}",method = RequestMethod.DELETE)
+    @RequiresPermissions("admins:delete")
+    @PermissionName("管理员账户删除")
     public String deleteAdmin(@PathVariable("id") Integer id){
         adminService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/admins/{id}",method = RequestMethod.GET)
+    @RequiresPermissions("admins:get")
+    @PermissionName("管理员账户查询")
     public Admin getAdmin(@PathVariable("id") Integer id){
         return adminService.get(id);
     }
+
     @RequestMapping(value = "/admins",method = RequestMethod.GET)
+    @RequiresPermissions("admins:list")
+    @PermissionName("管理员账户列表")
     public List<Admin> getAdvice(){
         return adminService.getAll();
     }

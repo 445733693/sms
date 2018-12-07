@@ -18,11 +18,15 @@ public class AgentController {
     private IAgentService agentService;
 
     @RequestMapping(value = "/agents",method = RequestMethod.POST)
+    @RequiresPermissions("agents:save")
+    @PermissionName("代理商账户添加")
     public String saveAgent(@RequestBody Agent agent){
         agentService.save(agent);
         return"success";
     }
     @RequestMapping(value = "/agents",method = RequestMethod.PUT)
+    @RequiresPermissions("agents:edit")
+    @PermissionName("代理商账户修改")
     public String updateAgent(@RequestBody Agent agent){
         Agent old = agentService.get(agent.getId());
         UpdateUtil.updateIfNotNull(old,agent);
@@ -30,15 +34,22 @@ public class AgentController {
         return"success";
     }
     @RequestMapping(value = "/agents/{id}",method = RequestMethod.DELETE)
+    @RequiresPermissions("agents:delete")
+    @PermissionName("代理商账户删除")
     public String deleteAgent(@PathVariable("id") Integer id){
         agentService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/agents/{id}",method = RequestMethod.GET)
+    @RequiresPermissions("agents:get")
+    @PermissionName("代理商账户查询")
     public Agent getAgent(@PathVariable("id") Integer id){
         return agentService.get(id);
     }
+
     @RequestMapping(value = "/agents",method = RequestMethod.GET)
+    @RequiresPermissions("agents:list")
+    @PermissionName("代理商账户列表")
     public List<Agent> getAgent(){
         return agentService.getAll();
     }

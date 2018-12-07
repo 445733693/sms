@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresPermissions("phoneLibs")
-@PermissionName("号码库")
 public class PhoneLibController{
     @Autowired
     private IPhoneLibService phoneLibService;
@@ -22,11 +20,15 @@ public class PhoneLibController{
      * @return 添加成功的标志
      */
     @RequestMapping(value = "/phoneLibs",method = RequestMethod.POST)
+    @RequiresPermissions("phoneLibs:save")
+    @PermissionName("号码库添加")
     public String savePhoneLib(@RequestBody PhoneLib phoneLib){
         phoneLibService.save(phoneLib);
         return"success";
     }
     @RequestMapping(value = "/phoneLibs",method = RequestMethod.PUT)
+    @RequiresPermissions("phoneLibs:edit")
+    @PermissionName("号码库修改")
     public String updatePhoneLib(@RequestBody PhoneLib phoneLib){
         PhoneLib old = phoneLibService.get(phoneLib.getId());
         UpdateUtil.updateIfNotNull(old,phoneLib);
@@ -34,15 +36,21 @@ public class PhoneLibController{
         return"success";
     }
     @RequestMapping(value = "/phoneLibs/{id}",method = RequestMethod.DELETE)
+    @RequiresPermissions("phoneLibs:delete")
+    @PermissionName("号码库删除")
     public String deletePhoneLib(@PathVariable("id") Integer id){
         phoneLibService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/phoneLibs/{id}",method = RequestMethod.GET)
+    @RequiresPermissions("phoneLibs:get")
+    @PermissionName("号码库查询")
     public PhoneLib getPhoneLib(@PathVariable("id") Integer id){
         return phoneLibService.get(id);
     }
     @RequestMapping(value = "/phoneLibs",method = RequestMethod.GET)
+    @RequiresPermissions("phoneLibs:list")
+    @PermissionName("号码库列表")
     public List<PhoneLib> getPhoneLibs(){
         return phoneLibService.getAll();
     }

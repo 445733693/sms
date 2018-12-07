@@ -29,6 +29,7 @@ public class AdminRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         System.out.println("AdminRealm授权.......");
+        List<String> permissions= new ArrayList<>();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         return info;
     }

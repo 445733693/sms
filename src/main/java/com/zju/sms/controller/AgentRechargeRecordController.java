@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresPermissions("agentRechargeRecords")
-@PermissionName("代理商充值记录")
 public class AgentRechargeRecordController {
     @Autowired
     private IAgentRechargeRecordService agentRechargeRecordService;
@@ -39,6 +37,8 @@ public class AgentRechargeRecordController {
         return agentRechargeRecordService.get(id);
     }
     @RequestMapping(value = "/agentRechargeRecords",method = RequestMethod.GET)
+    @RequiresPermissions("agentRechargeRecords:list")
+    @PermissionName("代理商充值记录列表")
     public List<AgentRechargeRecord> getAgentRechargeRecord(){
         return agentRechargeRecordService.getAll();
     }

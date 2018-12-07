@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiresPermissions("expenseRecords")
-@PermissionName("消费记录")
 public class ExpenseRecordController {
     @Autowired
     private IExpenseRecordService expenseRecordService;
@@ -30,15 +28,21 @@ public class ExpenseRecordController {
         return"success";
     }
     @RequestMapping(value = "/expenseRecords/{id}",method = RequestMethod.DELETE)
+    @RequiresPermissions("expenseRecords:delete")
+    @PermissionName("消费记录删除")
     public String deleteExpenseRecord(@PathVariable("id") Integer id){
         expenseRecordService.delete(id);
         return"success";
     }
     @RequestMapping(value = "/expenseRecords/{id}",method = RequestMethod.GET)
+    @RequiresPermissions("expenseRecords:get")
+    @PermissionName("消费记录查询")
     public ExpenseRecord getAdvice(@PathVariable("id") Integer id){
         return expenseRecordService.get(id);
     }
     @RequestMapping(value = "/expenseRecords",method = RequestMethod.GET)
+    @RequiresPermissions("expenseRecords:list")
+    @PermissionName("消费记录列表")
     public List<ExpenseRecord> getAdvice(){
         return expenseRecordService.getAll();
     }
