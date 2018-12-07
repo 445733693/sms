@@ -2,13 +2,17 @@ package com.zju.sms.controller;
 
 import com.zju.sms.domain.MessageDraft;
 import com.zju.sms.service.IMessageDraftService;
+import com.zju.sms.shiro.PermissionName;
 import com.zju.sms.util.UpdateUtil;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiresPermissions("messageDrafts")
+@PermissionName("短信草稿")
 public class MessageDraftController {
     @Autowired
     private IMessageDraftService messageDraftService;

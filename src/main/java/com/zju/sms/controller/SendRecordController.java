@@ -2,13 +2,17 @@ package com.zju.sms.controller;
 
 import com.zju.sms.domain.SendRecord;
 import com.zju.sms.service.ISendRecordService;
+import com.zju.sms.shiro.PermissionName;
 import com.zju.sms.util.UpdateUtil;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiresPermissions("sendRecords")
+@PermissionName("发送记录")
 public class SendRecordController {
     @Autowired
     private ISendRecordService sendRecordService;

@@ -33,7 +33,7 @@ public class LoginController {
     @RequestMapping(value = "/user" ,method = RequestMethod.POST)
     public String loginuser(@RequestParam(value = "username",required = false) String username,
                         @RequestParam(value = "password",required = false) String password, Model model){
-        System.out.println("用户登陆验证....");
+        System.out.println("终端用户登陆验证....");
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordTypeToken(username, password,USER_LOGIN_TYPE);
         try {
@@ -48,7 +48,7 @@ public class LoginController {
     @RequestMapping(value = "/agent" ,method = RequestMethod.POST)
     public String loginagent(@RequestParam(value = "username",required = false) String username,
                             @RequestParam(value = "password",required = false) String password, Model model){
-        System.out.println("用户登陆验证....");
+        System.out.println("代理商登陆验证....");
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordTypeToken(username, password,AGENT_LOGIN_TYPE);
         try {
@@ -63,7 +63,7 @@ public class LoginController {
     @RequestMapping(value = "/admin" ,method = RequestMethod.POST)
     public String loginadmin(@RequestParam(value = "username",required = false) String username,
                             @RequestParam(value = "password",required = false) String password, Model model){
-        System.out.println("用户登陆验证....");
+        System.out.println("管理员登陆验证....");
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordTypeToken(username, password,ADMIN_LOGIN_TYPE);
         try {

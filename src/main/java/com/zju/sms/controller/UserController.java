@@ -2,13 +2,17 @@ package com.zju.sms.controller;
 
 import com.zju.sms.domain.User;
 import com.zju.sms.service.IUserService;
+import com.zju.sms.shiro.PermissionName;
 import com.zju.sms.util.UpdateUtil;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiresPermissions("users")
+@PermissionName("终端用户账户")
 public class UserController {
     @Autowired
     private IUserService userService;

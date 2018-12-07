@@ -3,13 +3,17 @@ package com.zju.sms.controller;
 
 import com.zju.sms.domain.ContactCategory;
 import com.zju.sms.service.IContactCategoryService;
+import com.zju.sms.shiro.PermissionName;
 import com.zju.sms.util.UpdateUtil;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+/*@RequiresPermissions("contactCategorys")
+@PermissionName("联系人分类")*/
 public class ContactCategoryController {
     @Autowired
     private IContactCategoryService contactCategoryService;
@@ -36,6 +40,7 @@ public class ContactCategoryController {
         return contactCategoryService.get(id);
     }
     @RequestMapping(value = "/contactCategorys",method = RequestMethod.GET)
+    @RequiresPermissions("contactCategorys:getAll")
     public List<ContactCategory> getContactCategory(){
         return contactCategoryService.getAll();
     }

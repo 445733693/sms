@@ -2,13 +2,17 @@ package com.zju.sms.controller;
 
 import com.zju.sms.domain.Blacklist;
 import com.zju.sms.service.IBlacklistService;
+import com.zju.sms.shiro.PermissionName;
 import com.zju.sms.util.UpdateUtil;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiresPermissions("blacklists")
+@PermissionName("黑名单")
 public class BlacklistController {
     @Autowired
     private IBlacklistService blacklistService;

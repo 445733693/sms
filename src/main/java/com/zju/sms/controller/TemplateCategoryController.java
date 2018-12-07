@@ -2,13 +2,17 @@ package com.zju.sms.controller;
 
 import com.zju.sms.domain.TemplateCategory;
 import com.zju.sms.service.ITemplateCategoryService;
+import com.zju.sms.shiro.PermissionName;
 import com.zju.sms.util.UpdateUtil;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiresPermissions("templateCategorys")
+@PermissionName("短信模板分类")
 public class TemplateCategoryController {
     @Autowired
     private ITemplateCategoryService templateCategoryService;

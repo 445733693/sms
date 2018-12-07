@@ -2,13 +2,17 @@ package com.zju.sms.controller;
 
 import com.zju.sms.domain.InvoiceInfo;
 import com.zju.sms.service.IInvoiceInfoService;
+import com.zju.sms.shiro.PermissionName;
 import com.zju.sms.util.UpdateUtil;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiresPermissions("invoiceInfos")
+@PermissionName("发票")
 public class InvoiceInfoController {
     @Autowired
     private IInvoiceInfoService invoiceInfoService;

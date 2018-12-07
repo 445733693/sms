@@ -2,13 +2,17 @@ package com.zju.sms.controller;
 
 import com.zju.sms.domain.UserRechargeRecord;
 import com.zju.sms.service.IUserRechargeRecordService;
+import com.zju.sms.shiro.PermissionName;
 import com.zju.sms.util.UpdateUtil;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiresPermissions("userRechargeRecords")
+@PermissionName("终端用户充值记录")
 public class UserRechargeRecordController {
     @Autowired
     private IUserRechargeRecordService userRechargeRecordService;

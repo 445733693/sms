@@ -2,13 +2,17 @@ package com.zju.sms.controller;
 
 import com.zju.sms.domain.ExpenseRecord;
 import com.zju.sms.service.IExpenseRecordService;
+import com.zju.sms.shiro.PermissionName;
 import com.zju.sms.util.UpdateUtil;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiresPermissions("expenseRecords")
+@PermissionName("消费记录")
 public class ExpenseRecordController {
     @Autowired
     private IExpenseRecordService expenseRecordService;

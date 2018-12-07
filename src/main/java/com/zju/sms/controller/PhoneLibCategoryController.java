@@ -3,9 +3,12 @@ package com.zju.sms.controller;
 import com.zju.sms.domain.PhoneLibCategory;
 import com.zju.sms.service.IPhoneLibCategoryService;
 import com.zju.sms.service.impl.PhoneLibCategoryServiceImpl;
+import com.zju.sms.shiro.PermissionName;
 import com.zju.sms.util.UpdateUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +16,8 @@ import java.util.List;
 
 @RestController
 @Api(value = "" ,tags = "号码库分类接口")
+/*@RequiresPermissions("phoneLibCategorys")
+@PermissionName("号码库分类")*/
 public class PhoneLibCategoryController {
     @Autowired
     private IPhoneLibCategoryService phoneLibCategoryService;
@@ -43,6 +48,7 @@ public class PhoneLibCategoryController {
 
     @RequestMapping(value = "/phoneLibCategorys",method = RequestMethod.GET)
     @ApiOperation(value = "查询所有号码库分类",notes = "不用任何参数，列出所有号码库分类",httpMethod = "GET")
+    @RequiresPermissions("phoneLibCategorys:getAll")
     public List<PhoneLibCategory> getCategory(){
         return phoneLibCategoryService.getAll();
     }
