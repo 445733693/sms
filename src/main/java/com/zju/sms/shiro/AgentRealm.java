@@ -42,7 +42,7 @@ public class AgentRealm extends AuthorizingRealm{
         String username = token.getUsername();
         Agent agent = agentService.getByUsername(username);
         if(agent==null) return null;
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, agent.getPassword(), getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(agent, agent.getPassword(), getName());
         return info;
     }
 }

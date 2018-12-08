@@ -1,9 +1,14 @@
 package com.zju.sms.shiro;
 
 import com.zju.sms.domain.Admin;
+import com.zju.sms.domain.AdminPermission;
 import com.zju.sms.domain.Agent;
+import com.zju.sms.domain.Permission;
+import com.zju.sms.mapper.AdminPermissionMapper;
+import com.zju.sms.mapper.PermissionMapper;
 import com.zju.sms.service.IAdminService;
 import com.zju.sms.service.IAgentService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -12,6 +17,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -20,6 +26,10 @@ import java.util.List;
 public class AdminRealm extends AuthorizingRealm {
     @Autowired
     private IAdminService adminService;
+    @Autowired
+    private AdminPermissionMapper adminPermissionMapper;
+    @Autowired
+    private PermissionMapper permissionMapper;
 
     @Override
     public String getName() {
@@ -30,7 +40,17 @@ public class AdminRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         System.out.println("AdminRealm授权.......");
         List<String> permissions= new ArrayList<>();
+//        取当前登陆的管理员账户
+        Subject currentAdmin = SecurityUtils.getSubject();
+        Admin admin = (Admin) currentAdmin.getPrincipal();
+//        从数据库查询当前账户的权限
+        List<AdminPermission> aps = adminPermissionMapper.selectByAdminId(admin.getId());
+        for(AdminPermission ap:aps){
+            Permission permission = permissionMapper.selectByPrimaryKey(ap.getPermissionId());
+            permissions.add(permission.getResource());
+        }
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        info.addStringPermissions(permissions);
         return info;
     }
 
@@ -40,7 +60,7 @@ public class AdminRealm extends AuthorizingRealm {
         String username = token.getUsername();
         Admin admin = adminService.getByUsername(username);
         if(admin==null) return null;
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, admin.getPassword(), getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(admin, admin.getPassword(), getName());
         return info;
     }
 }

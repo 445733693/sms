@@ -1,25 +1,19 @@
 package com.zju.sms.controller;
 
+import com.zju.sms.domain.Permission;
+import com.zju.sms.mapper.PermissionMapper;
 import com.zju.sms.shiro.PermissionName;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.core.io.support.ResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternUtils;
-import org.springframework.core.type.classreading.CachingMetadataReaderFactory;
-import org.springframework.core.type.classreading.MetadataReader;
-import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,9 +28,18 @@ public class LoadPermissionsController {
     @Qualifier("requestMappingHandlerMapping")
     private RequestMappingHandlerMapping rmhm;
 
+    @Autowired
+    private PermissionMapper permissionMapper;
+
     @RequestMapping("/loadPermissions")
     public void load() throws Exception {
         System.out.println("加载权限.....");
+//        获取已存在的权限，方式重复加载
+        List<Permission> permissions = permissionMapper.selectAll();
+        List<String> pList=new ArrayList<>();
+        for(Permission p:permissions){
+            pList.add(p.getResource());
+        }
         //获取所有controller中所有带@RequestMapping标签的方法
         Map<RequestMappingInfo, HandlerMethod> handlerMethods = rmhm.getHandlerMethods();
         Collection<HandlerMethod> methods = handlerMethods.values();
@@ -47,9 +50,18 @@ public class LoadPermissionsController {
             if(rq!=null){
 //                获取权限表达式
                 String resource = rq.value()[0];
+//                权限已存在，则跳过
+                if(pList.contains(resource)){
+                    continue;
+                }
 //                获取权限名
                 String name = method.getMethodAnnotation(PermissionName.class).value()[0];
-                System.out.println(name+":"+resource);
+//                System.out.println(name+":"+resource);
+//                权限存入数据库
+                Permission permission = new Permission();
+                permission.setName(name);
+                permission.setResource(resource);
+                permissionMapper.insert(permission);
             }
         }
     }

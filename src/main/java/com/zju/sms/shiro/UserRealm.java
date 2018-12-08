@@ -51,8 +51,11 @@ public class UserRealm extends AuthorizingRealm {
             throw new UnknownAccountException("用户不存在");
         }
 //        这里的第一个参数principle可以是对象
+//        这里的principle使用的是User对象，因为是从数据库查的，所以含有完备的信息，用于之后取出使用
+//        Subject currentUser = SecurityUtils.getSubject();
+//        User user = (User) currentUser.getPrincipal();
 //        待完成：密码加密，加盐
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, user.getPassword(), getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), getName());
         return info;
     }
 }

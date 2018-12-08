@@ -31,9 +31,9 @@
         <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="user" delimitIdentifiers="true" domainObjectName="User">
+        <!--<table tableName="user" delimitIdentifiers="true" domainObjectName="User">
             <property name="useActualColumnNames" value="true"/>
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+            &lt;!&ndash;<generatedKey column="id" sqlStatement="JDBC"/>&ndash;&gt;
         </table>
         <table tableName="messageTemplate" delimitIdentifiers="true" domainObjectName="MessageTemplate">
             <property name="useActualColumnNames" value="true"/>
@@ -62,11 +62,11 @@
         </table>
         <table tableName="contactCategory" delimitIdentifiers="true" domainObjectName="ContactCategory">
             <property name="useActualColumnNames" value="true"/>
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+            &lt;!&ndash;<generatedKey column="id" sqlStatement="JDBC"/>&ndash;&gt;
         </table>
         <table tableName="userRechargeRecord" delimitIdentifiers="true" domainObjectName="UserRechargeRecord">
             <property name="useActualColumnNames" value="true"/>
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+            &lt;!&ndash;<generatedKey column="id" sqlStatement="JDBC"/>&ndash;&gt;
         </table>
         <table tableName="expenseRecord" delimitIdentifiers="true" domainObjectName="ExpenseRecord">
             <property name="useActualColumnNames" value="true"/>
@@ -86,7 +86,7 @@
         </table>
         <table tableName="agent" delimitIdentifiers="true" domainObjectName="Agent">
             <property name="useActualColumnNames" value="true"/>
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+            &lt;!&ndash;<generatedKey column="id" sqlStatement="JDBC"/>&ndash;&gt;
         </table>
         <table tableName="agentRechargeRecord" delimitIdentifiers="true" domainObjectName="AgentRechargeRecord">
             <property name="useActualColumnNames" value="true"/>
@@ -94,7 +94,7 @@
         </table>
         <table tableName="admin" delimitIdentifiers="true" domainObjectName="Admin">
             <property name="useActualColumnNames" value="true"/>
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+            &lt;!&ndash;<generatedKey column="id" sqlStatement="JDBC"/>&ndash;&gt;
         </table>
         <table tableName="rechargeSolution" delimitIdentifiers="true" domainObjectName="RechargeSolution">
             <property name="useActualColumnNames" value="true"/>
@@ -141,6 +141,14 @@
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
         <table tableName="whiteklist" delimitIdentifiers="true" domainObjectName="whitelist">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>-->
+        <table tableName="permission" delimitIdentifiers="true" domainObjectName="Permission">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="admin_permission" delimitIdentifiers="true" domainObjectName="AdminPermission">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
