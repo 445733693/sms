@@ -41,7 +41,7 @@ public class AdminPermissionController {
     @ApiOperation(value = "修改管理员权限" ,notes = "需要当前登陆账户拥有permission:edit权限")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "adminId",value = "被修改权限的管理员账户id"),
-            @ApiImplicitParam(name = "pids",value = "权限的id数组")
+            @ApiImplicitParam(name = "pIds",value = "权限的id数组")
     })
     public String setPermission( @RequestParam Integer adminId, @RequestParam Integer[] pIds){
 //        删除该管理员原来的所有权限

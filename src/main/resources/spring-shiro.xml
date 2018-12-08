@@ -41,9 +41,10 @@
         <property name="unauthorizedUrl" value="/nopermission.jsp"/>
         <property name="filterChainDefinitions">
             <value>
-                /login=anon
+                /**=anon
+              <!--  /login=anon
                 /login/**=anon
-                /**=authc
+                /**=authc-->
             </value>
         </property>
     </bean>
