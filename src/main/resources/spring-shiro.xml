@@ -42,7 +42,7 @@
         <property name="filterChainDefinitions">
             <value>
                 /**=anon
-              <!--  /login=anon
+               <!-- /login=anon
                 /login/**=anon
                 /**=authc-->
             </value>
